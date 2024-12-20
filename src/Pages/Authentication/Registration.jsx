@@ -7,7 +7,9 @@ import axios from "axios";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import UseAuth from "../../Hooks/UseAuth";
 import { toast } from "sonner";
+import { FcGoogle } from "react-icons/fc";
 
+// image hosting key and api
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -25,37 +27,43 @@ const Registration = () => {
       image: "",
       role: "buyer",
     },
+
+    // Form validation via yup
     validationSchema: Yup.object({
       fullName: Yup.string()
         .max(25, "Must be 15 characters or less")
         .required("Name is Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
+      email: Yup.string().email("Invalid email address").required("Email is Required"),
       password: Yup.string()
         .required("Password is required")
-        .min(8, "Password is too short - should be 6 chars minimum.")
+        .min(8, "Password is too short - should be 8 chars minimum.")
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
           "Must Contain One Uppercase, One Lowercase, One Number and One Special Case Character"
         ),
     }),
 
+    // Form Submission
     onSubmit: async (values) => {
       const minDelay = 1000;
       const startTime = Date.now();
       toast.loading("User creating...")
 
       const{name,email,role,password} = values;
-      const image = values.Profile;
+      const image = values?.Profile;
       const cart = [];
       const wishlist = [];
       const status = values?.role =='seller' ? "pending" : "approved";
+
+      // image hosting and url creation
       const formData = new FormData();
       formData.append("image", image);
       const res = await axios.post(image_hosting_api, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      const photoURL = res.data.data.display_url;
+      const photoURL = res?.data?.data?.display_url;
 
+      // User creation with email and password
       const createdUser = await createUser(email, password);
       try {
        console.log(createdUser)
@@ -71,7 +79,7 @@ const Registration = () => {
           wishlist,
         };
         await axiosPublic.post("/users", userInfo).then((res) => {
-          console.log(res.data);
+          console.log(res?.data);
         });
         const passed = Date.now() - startTime;
         if (passed < minDelay) {
@@ -83,10 +91,13 @@ const Registration = () => {
         navigate(location?.state ? location?.state : "/");
         location.reload();
       } catch (err) {
-        console.log(err);
+        toast.dismiss()
+        toast.error(`${err.message}`)
       }
     },
   });
+
+
   const handleGoogleSignin = async () => {
     const res = await googleSignin();
     try {
@@ -104,7 +115,7 @@ const Registration = () => {
       const startTime = Date.now();
       toast.loading("User is creating...");
 
-      const result =await axiosPublic.post("/users", userInfo)
+      await axiosPublic.post("/users", userInfo)
 
       const passed = Date.now() - startTime;
       if (passed < minDelay) {
@@ -113,8 +124,6 @@ const Registration = () => {
      
       toast.dismiss();
       toast.success("User successfully created!!");
-
-      console.log(result)
       
       
     } catch (error) {
@@ -125,9 +134,10 @@ const Registration = () => {
 
   return (
     <div className=" w-full my-8 mx-12">
+
       <form
         onSubmit={formik.handleSubmit}
-        className="rounded-lg mt-12 flex flex-col gap-2 items-center bg-black opacity-50 py-6 space-y-2 mx-auto lg:w-2/3 text-white"
+        className="rounded-lg mt-12 flex flex-col gap-2 items-center bg-black py-6 space-y-2 mx-auto lg:w-2/3 text-white"
       >
         <h2 className="text-center text-2xl lg:text-4xl text-[#d9f9a5] my-6">
           Please Sign Up{" "}
@@ -226,7 +236,7 @@ const Registration = () => {
         <br />
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <button
-            className="w-3/4 btn py-3 rounded-lg  px-3 bg-[#4CAF41] text-white"
+            className="w-3/4 btn py-3 rounded-lg  px-3 bg-primary text-white"
             type="submit"
           >
             Sign up
@@ -239,8 +249,9 @@ const Registration = () => {
           <button
             type="button"
             onClick={handleGoogleSignin}
-            className="btn mb-4 text-white rounded-lg text-center w-3/4 bg-[#4CAF41] py-3"
+            className="btn gap-2 flex items-center mb-4 text-white rounded-lg text-center w-3/4 bg-primary py-3"
           >
+            <FcGoogle className="text-2xl"/>
             <h2 className="flex justify-center items-center gap-4">
               Login by Google
             </h2>
@@ -256,6 +267,7 @@ const Registration = () => {
           </h2>
         </div>
       </form>
+
     </div>
   );
 };

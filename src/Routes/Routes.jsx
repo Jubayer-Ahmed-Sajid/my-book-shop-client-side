@@ -6,6 +6,7 @@ import Books from '../Pages/Books/Books';
 import AboutUs from '../Pages/About-us/AboutUs';
 import ContactUs from '../Pages/ContactUs/ContactUs';
 import Registration from '../Pages/Authentication/Registration';
+import Login from '../Pages/Authentication/Login';
  const routes = createBrowserRouter([
         {
           path: "/",
@@ -30,6 +31,10 @@ import Registration from '../Pages/Authentication/Registration';
             {
                 path:'registration',
                 element:<Registration></Registration>
+            },
+            {
+              path:'login',
+              element:<Login></Login>
             }
           ]
         },
