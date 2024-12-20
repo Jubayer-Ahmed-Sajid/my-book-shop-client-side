@@ -1,28 +1,38 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/vecteezy_man-entering-security-password_4689193-1.jpg";
 import axios from "axios";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import UseAuth from "../../Hooks/UseAuth";
+import { toast } from "sonner";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Registration = () => {
+  const { createUser, googleSignin} = UseAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const formik = useFormik({
     initialValues: {
       fullName: "",
       email: "",
       password: "",
       image: "",
+      role: "buyer",
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
-        .max(15, "Must be 15 characters or less")
+        .max(25, "Must be 15 characters or less")
         .required("Name is Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string()
         .required("Password is required")
-        .min(6, "Password is too short - should be 6 chars minimum.")
+        .min(8, "Password is too short - should be 6 chars minimum.")
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
           "Must Contain One Uppercase, One Lowercase, One Number and One Special Case Character"
@@ -30,63 +40,102 @@ const Registration = () => {
     }),
 
     onSubmit: async (values) => {
-        console.log(values)
-      const email = values.email;
-      const name = values.fullName;
-      const password = values.password;
+      const minDelay = 1000;
+      const startTime = Date.now();
+      toast.loading("User creating...")
+
+      const{name,email,role,password} = values;
       const image = values.Profile;
-      console.log(name, image);
+      const cart = [];
+      const wishlist = [];
+      const status = values?.role =='seller' ? "pending" : "approved";
       const formData = new FormData();
       formData.append("image", image);
       const res = await axios.post(image_hosting_api, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      const photo_url = res.data.data.display_url;
-      console.log("photo url is", photo_url)
-      const createdUser = await createUser(email, password);
-      console.log(createdUser);
-      updateUser(name, photo_url)
-        .then(async () => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Successfully logged in!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+      const photoURL = res.data.data.display_url;
 
-          const isAdmin = false;
-          const userInfo = {
-            name,
-            email,
-            photo_url,
-            isAdmin,
-          };
-          await axiosPublic.post("/users", userInfo).then((res) => {
-            console.log(res.data);
-          });
-          navigate(location?.state ? location?.state : "/");
-          location.reload();
-        })
-        .catch((err) => {
-          console.log(err);
+      const createdUser = await createUser(email, password);
+      try {
+       console.log(createdUser)
+        const isAdmin = false;
+        const userInfo = {
+          name,
+          email,
+          photoURL,
+          role,
+          status,
+          isAdmin,
+          cart,
+          wishlist,
+        };
+        await axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res.data);
         });
+        const passed = Date.now() - startTime;
+        if (passed < minDelay) {
+          await new Promise((resolve) => setTimeout(resolve, minDelay - passed));
+        }
+       
+        toast.dismiss();
+        toast.success("User successfully created!!");
+        navigate(location?.state ? location?.state : "/");
+        location.reload();
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
-  const handleGoogleSigin = () => {};
+  const handleGoogleSignin = async () => {
+    const res = await googleSignin();
+    try {
+      const name = res?.user?.displayName;
+      const email = res?.user.email;
+      const photoURL =res?.user?.photoURL;
+      const role = "buyer"
+      const status = "approved"
+      const isAdmin = false;
+      const cart=[];
+      const wishlist=[];
+
+      const userInfo= {name,email,photoURL,role,status,isAdmin,cart,wishlist} 
+      const minDelay = 1000;
+      const startTime = Date.now();
+      toast.loading("User is creating...");
+
+      const result =await axiosPublic.post("/users", userInfo)
+
+      const passed = Date.now() - startTime;
+      if (passed < minDelay) {
+        await new Promise((resolve) => setTimeout(resolve, minDelay - passed));
+      }
+     
+      toast.dismiss();
+      toast.success("User successfully created!!");
+
+      console.log(result)
+      
+      
+    } catch (error) {
+      toast.dismiss()
+      toast.error(`${error.message}`)
+    }
+  };
 
   return (
-    <div
-      className=" w-full my-8 mx-12">
+    <div className=" w-full my-8 mx-12">
       <form
         onSubmit={formik.handleSubmit}
-        className="rounded-lg mt-12 flex flex-col gap-2 items-center bg-primary py-6 space-y-2 mx-auto lg:w-2/3 text-white"
+        className="rounded-lg mt-12 flex flex-col gap-2 items-center bg-black opacity-50 py-6 space-y-2 mx-auto lg:w-2/3 text-white"
       >
         <h2 className="text-center text-2xl lg:text-4xl text-[#d9f9a5] my-6">
           Please Sign Up{" "}
         </h2>
         <div className=" w-3/4 lg:w-2/4 space-y-2">
-          <label className="" htmlFor="fullName">Full Name</label>
+          <label className="" htmlFor="fullName">
+            Full Name
+          </label>
           <br />
           <input
             id="fullName"
@@ -155,6 +204,24 @@ const Registration = () => {
             <p className="text-red-400 text-md">{formik.errors.password}</p>
           ) : null}
         </div>
+        <div className="space-y-2 mx-auto w-3/4 lg:w-2/4">
+          <label>Role</label>
+          <br />
+          <select
+            className="select text-black select-bordered w-full"
+            id="role"
+            name="role"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.role}
+          >
+            <option disabled selected>
+              Select Role
+            </option>
+            <option value="buyer">Buyer</option>
+            <option value="seller">Seller</option>
+          </select>
+        </div>
 
         <br />
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
@@ -165,13 +232,13 @@ const Registration = () => {
             Sign up
           </button>
         </div>
-       
+
         <div className="divider divider-accent lg:w-2/3 mx-auto">Or</div>
-          
-    
+
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <button
-            onClick={handleGoogleSigin}
+            type="button"
+            onClick={handleGoogleSignin}
             className="btn mb-4 text-white rounded-lg text-center w-3/4 bg-[#4CAF41] py-3"
           >
             <h2 className="flex justify-center items-center gap-4">
@@ -183,12 +250,11 @@ const Registration = () => {
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <h2>
             Already have an account ?
-            <Link className="text-blue-400 ml-2 hover:underline" to="/signin">
-             Login
+            <Link className="text-blue-400 ml-2 hover:underline" to="/login">
+              Login
             </Link>
           </h2>
         </div>
-
       </form>
     </div>
   );
