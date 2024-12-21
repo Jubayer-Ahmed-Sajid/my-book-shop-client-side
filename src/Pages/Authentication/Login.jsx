@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { login,googleSignin } = UseAuth();
@@ -124,7 +125,7 @@ const Login = () => {
         </div>
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <button
-            className="w-3/4 btn py-3 rounded-lg  px-3 bg-[#4CAF41] text-white"
+            className="w-3/4 btn py-3 rounded-lg  px-3 bg-primary text-white"
             type="submit"
           >
             Login
@@ -137,8 +138,9 @@ const Login = () => {
           <button
             type="button"
             onClick={handleGoogleSignin}
-            className="btn mb-4 text-white rounded-lg text-center w-3/4 bg-[#4CAF41] py-3"
+            className="btn mb-4 flex gap-2 items-center text-white rounded-lg text-center w-3/4 bg-primary py-3"
           >
+            <FcGoogle className="text-2xl"></FcGoogle>
             <h2 className="flex justify-center items-center gap-4">
               Login by Google
             </h2>

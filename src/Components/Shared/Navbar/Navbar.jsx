@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
+import useUserDetails from "../../../Hooks/useUserDetails";
+import UseAuth from "../../../Hooks/UseAuth";
 
 const Navbar = () => {
-  const [user,setUser] = useState(false)
+  const {data} = useUserDetails()
+  const {user} = UseAuth()
   const navLinks = (
     <>
       <li>

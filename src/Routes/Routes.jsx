@@ -7,6 +7,8 @@ import AboutUs from '../Pages/About-us/AboutUs';
 import ContactUs from '../Pages/ContactUs/ContactUs';
 import Registration from '../Pages/Authentication/Registration';
 import Login from '../Pages/Authentication/Login';
+import Dashboard from '../Layouts/Dashboard/Dashboard';
+import Overview from '../Pages/Dashboard/Overview/Overview';
  const routes = createBrowserRouter([
         {
           path: "/",
@@ -36,8 +38,19 @@ import Login from '../Pages/Authentication/Login';
               path:'login',
               element:<Login></Login>
             }
-          ]
+          ],
+          
         },
+        {
+          path:'/dashboard',
+          element:<Dashboard></Dashboard>,
+          children:[
+            {
+              path:'/dashboard/overview',
+              element:<Overview></Overview>
+            }
+          ]
+        }
       ]);
 export default routes
 
