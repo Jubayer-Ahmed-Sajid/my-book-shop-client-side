@@ -19,28 +19,34 @@ const Sidebar = () => {
     options = (
       <>
         <li>
-       
-          <NavLink to="/cart"  className={({ isActive }) =>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <TiShoppingCart className="text-2xl" />
-          My Cart</NavLink>
+            }
+          >
+            <TiShoppingCart className="text-2xl" />
+            My Cart
+          </NavLink>
         </li>
         <li>
-        
-          <NavLink to="/wishlist"  className={({ isActive }) =>
+          <NavLink
+            to="/wishlist"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <FaRegHeart className="text-2xl" />
-          My Wishlist</NavLink>
+            }
+          >
+            <FaRegHeart className="text-2xl" />
+            My Wishlist
+          </NavLink>
         </li>
       </>
     );
@@ -48,28 +54,34 @@ const Sidebar = () => {
     options = (
       <>
         <li>
-
-          <NavLink to="/add-books"  className={({ isActive }) =>
+          <NavLink
+            to="/dashboard/add-books"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <IoAddCircleOutline className="text-2xl" />
-          Add Books</NavLink>
+            }
+          >
+            <IoAddCircleOutline className="text-2xl" />
+            Add Books
+          </NavLink>
         </li>
         <li>
-       
-          <NavLink to="/my-books"  className={({ isActive }) =>
+          <NavLink
+            to="/my-books"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <GiBookshelf className="text-2xl"/>
-          My Books</NavLink>
+            }
+          >
+            <GiBookshelf className="text-2xl" />
+            My Books
+          </NavLink>
         </li>
       </>
     );
@@ -77,28 +89,34 @@ const Sidebar = () => {
     options = (
       <>
         <li>
-      
-          <NavLink to="/all-users"  className={({ isActive }) =>
+          <NavLink
+            to="/all-users"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <LuUsersRound className="text-2xl"/>
-          All Users</NavLink>
+            }
+          >
+            <LuUsersRound className="text-2xl" />
+            All Users
+          </NavLink>
         </li>
         <li>
-       
-          <NavLink to="/all-books"  className={({ isActive }) =>
+          <NavLink
+            to="/all-books"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <GiBookshelf className="text-2xl" />
-          All Books</NavLink>
+            }
+          >
+            <GiBookshelf className="text-2xl" />
+            All Books
+          </NavLink>
         </li>
       </>
     );
@@ -110,22 +128,26 @@ const Sidebar = () => {
         <h2 className="text-primary text-xl font-bold py-8">My book Shop</h2>
         {options}
         <li>
-          <NavLink to="/"  className={({ isActive }) =>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
                   ? "bg-primary text-white"
                   : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
               }`
-            }>
-          <IoHomeOutline className=" text-2xl" />
-            Home</NavLink>
+            }
+          >
+            <IoHomeOutline className=" text-2xl" />
+            Home
+          </NavLink>
         </li>
 
         <li>
-         <button  className="my-2 bg-blue-700 text-base-100 p-2 w-full rounded-md flex items-center gap-2"
-            >
-         <MdLogout className="text-2xl" />
-            Logout</button>
+          <button className="my-2 bg-blue-700 text-base-100 p-2 w-full rounded-md flex items-center gap-2">
+            <MdLogout className="text-2xl" />
+            Logout
+          </button>
         </li>
       </ul>
     </div>

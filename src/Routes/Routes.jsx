@@ -9,6 +9,7 @@ import Registration from '../Pages/Authentication/Registration';
 import Login from '../Pages/Authentication/Login';
 import Dashboard from '../Layouts/Dashboard/Dashboard';
 import Overview from '../Pages/Dashboard/Overview/Overview';
+import AddBooks from '../Pages/Dashboard/Overview/AddBooks/AddBooks';
  const routes = createBrowserRouter([
         {
           path: "/",
@@ -48,6 +49,10 @@ import Overview from '../Pages/Dashboard/Overview/Overview';
             {
               path:'/dashboard/overview',
               element:<Overview></Overview>
+            },
+            {
+              path:'/dashboard/add-books',
+              element:<AddBooks></AddBooks>
             }
           ]
         }
