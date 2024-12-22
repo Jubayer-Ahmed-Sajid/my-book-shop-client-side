@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from "react";
-import userAllBooks from "../../Hooks/userAllBooks";
+import userAllBooks from "../../Hooks/useAllBooks";
 import SearchBar from "../../Components/SearchBar";
 import SortBar from "../../Components/SortBar";
 import FilterBar from "../../Components/FilterBar";
 import axios from "axios";
 import Book from "../../Components/Book";
 import { Link } from "react-router-dom";
+import Loading from "../../Components/Loading";
 
 const Books = () => {
-  const { data } = userAllBooks();
-
   const [search, setSearch] = useState("");
   const [sorts, setSorts] = useState("asc");
   const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState([]);
   const [author, setAuthor] = useState("");
-  const [authors, setAuthors] = useState([]);
-  const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const res = async () => {
-      const bookRes = await axios.get(
-        `http://localhost:5000/all-books?title=${search}&sorts=${sorts}&category=${category}&author=${author}`
-      );
-      setBooks(bookRes?.data?.books);
-      setAuthors(bookRes?.data?.authors);
-      setCategories(bookRes?.data?.categories);
-    };
-    res();
-  }, [search, sorts, category, author]);
+  const { data, isLoading, isError, refetch } = userAllBooks({
+    search,
+    sorts,
+    category,
+    author,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="text-red-500 w-screen h-screen flex items-center justify-center">
+        <Loading></Loading>
+      </div>
+    );
+  }
+  if(isError){
+    return <div className="text-red-500 w-screen h-screen flex items-center justify-center" >
+      <h2>Something went wrong !!</h2> 
+      <Link to="/" className="btn ml-4 btn-sm btn-warning">Back to Home</Link>
+    </div>
+  }
+  const { books, authors, categories } = data?.data;
 
   const handleReset = () => {
     setSearch("");
@@ -36,7 +42,7 @@ const Books = () => {
     setCategory("");
     setSorts("asc");
   };
-  console.log(books)
+
   return (
     <div>
       <div className="flex justify-between mx-6">
@@ -61,13 +67,14 @@ const Books = () => {
 
         <div className="col-span-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {books.length === 0 ? (
-              <h2>No books found</h2>
+            {books?.length === 0 ? (
+              <h2 className=" font-bold text-2xl h-screen w-screen flex items-center justify-center text-red-600">
+                No books found
+              </h2>
             ) : (
               books?.map((book) => (
                 <Link to={`/book/${book._id}`}>
-                <Book key={book._id} book={book}></Book>
-                
+                  <Book key={book?._id} book={book}></Book>
                 </Link>
               ))
             )}

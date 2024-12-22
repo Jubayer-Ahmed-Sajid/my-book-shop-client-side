@@ -3,14 +3,13 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import useTestimonialData from "../../../Hooks/useTestimonialData";
 import TestimonialCard from "../../../Components/TestimonialCard";
+import Loading from "../../../Components/Loading";
 const Testimonial = () => {
   const { testimonials, isLoading, isError } = useTestimonialData();
 
-  if (isLoading) return <p>Loading testimonials...</p>;
+  if (isLoading) return <p><Loading></Loading></p>;
   if (isError) return <p>Error loading testimonials.</p>;
   console.log(testimonials?.data);
   return (

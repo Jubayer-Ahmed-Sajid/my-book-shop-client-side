@@ -2,14 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosPublic from './useAxiosPublic';
 
-const userAllBooks = () => {
+const userAllBooks = ({search,sorts,category,author}) => {
     const axiosPublic = useAxiosPublic()
     const{data,isLoading,isError,refetch} = useQuery({
-        queryKey:["all-books"],
+        queryKey:["all-books",{search,sorts,category,author}],
         queryFn:async()=>{
-            return await axiosPublic.get("/all-books")
+            return await axiosPublic.get( `/all-books?title=${search}&sorts=${sorts}&category=${category}&author=${author}`)
 
-        }
+        },
     })
     return {data,isLoading,isError,refetch};
 };
