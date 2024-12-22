@@ -3,7 +3,7 @@ import GridLoader from "react-spinners/GridLoader";
 const Loading = () => {
     
   return (
-    <div>
+    <div className="flex items-center justify-center w-screen h-screen">
       <GridLoader
         color={"#FF0000"}
         loading:true

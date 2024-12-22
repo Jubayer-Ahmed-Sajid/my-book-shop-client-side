@@ -7,9 +7,16 @@ import { TiShoppingCart } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa";
 import { IoAddCircleOutline, IoHomeOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+import Loading from "../Loading";
+import UseAuth from "../../Hooks/UseAuth";
 
 const Sidebar = () => {
-  const { data } = useUserDetails();
+ 
+     const { data,isLoading,isError } = useUserDetails();
+     if(isLoading){
+         return <Loading></Loading>
+       }
+ 
   const role = data?.data?.role;
   const isAdmin = data?.data?.isAdmin;
   let options;
@@ -70,7 +77,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
-            to="/my-books"
+            to="/dashboard/my-books"
             className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
