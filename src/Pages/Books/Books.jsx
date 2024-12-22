@@ -5,6 +5,7 @@ import SortBar from "../../Components/SortBar";
 import FilterBar from "../../Components/FilterBar";
 import axios from "axios";
 import Book from "../../Components/Book";
+import { Link } from "react-router-dom";
 
 const Books = () => {
   const { data } = userAllBooks();
@@ -64,7 +65,10 @@ const Books = () => {
               <h2>No books found</h2>
             ) : (
               books?.map((book) => (
+                <Link to={`/book/${book._id}`}>
                 <Book key={book._id} book={book}></Book>
+                
+                </Link>
               ))
             )}
           </div>
