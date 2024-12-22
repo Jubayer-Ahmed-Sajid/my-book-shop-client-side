@@ -12,6 +12,7 @@ import Overview from "../Pages/Dashboard/Overview/Overview";
 import AddBooks from "../Pages/Dashboard/Overview/Seller/AddBooks/AddBooks";
 import BookDetails from "../Components/BookDetails";
 import MyBooks from "../Pages/Dashboard/Overview/Seller/MyBooks/MyBooks";
+import UpdateBooks from "../Pages/Dashboard/Overview/Seller/MyBooks/UpdateBooks";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,10 @@ const routes = createBrowserRouter([
         path:'/dashboard/my-books',
         element:<MyBooks></MyBooks>
       },
+      {
+        path:'/dashboard/update/:id',
+        element:<UpdateBooks></UpdateBooks>
+      }
     ],
   },
 ]);
