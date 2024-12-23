@@ -6,11 +6,13 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import BasicTable from "../../../../../Components/BasicTable";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 
 const MyBooks = () => {
   const { user } = UseAuth();
   const email = user?.email;
   const { data, isLoading, isError, refetch } = useSellerBooks({ email });
+  const axiosSecure = useAxiosSecure();
   if (isLoading) {
     return (
       <div>
@@ -76,7 +78,7 @@ const MyBooks = () => {
   ];
 
   const handleDelete = async(book) => {
-    axios.delete(`http://localhost:5000/books/${book._id}`).then((res) => {
+    axiosSecure.delete(`/books/${book._id}`).then((res) => {
       console.log(res.data);
       refetch();
     });

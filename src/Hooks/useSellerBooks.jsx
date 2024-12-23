@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import useAxiosSecure from './useAxiosSecure';
 
 
 const useSellerBooks = ({email}) => {
+    const axiosSecure=useAxiosSecure();
     const {data,isLoading,isError,refetch} = useQuery({
         queryKey:["seller-book", email],
         queryFn:()=>{
-            return axios.get(`http://localhost:5000/added-books/${email}`)
+            return axiosSecure.get(`/added-books/${email}`)
         }
     })
     return {data,isLoading,isError,refetch}

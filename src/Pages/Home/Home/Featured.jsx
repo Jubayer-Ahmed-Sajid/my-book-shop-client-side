@@ -1,15 +1,16 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Book from "../../../Components/Book";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Featured = () => {
+  const axiosPublic = useAxiosPublic()
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const fetchFeaturedBooks = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/featured-books?count=4"
+        const response = await axiosPublic.get(
+          "/featured-books?count=4"
         );
         setBooks(response?.data);
       } catch (error) {

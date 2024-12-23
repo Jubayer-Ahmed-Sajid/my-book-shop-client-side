@@ -10,12 +10,15 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../FirebaseConfig";
+import axios from "axios";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -38,19 +41,19 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      // if(currentUser){
-      //     axios.post('http://localhost:5000/jwt',{email:currentUser.email})
-      //     .then((data)=>{
-      //       if(data.data){
-      //         localStorage.setItem("access-token",data?.data?.token)
-      //         setLoading(false)
-      //       }
-      //     })
-      //   }
-      //   else{
-      //     localStorage.removeItem("access-token");
-      //     setLoading(false);
-      //   }
+      if(currentUser){
+          axiosPublic.post('/jwt',{email:currentUser.email})
+          .then((data)=>{
+            if(data.data){
+              localStorage.setItem("access-token",data?.data?.token)
+              setLoading(false)
+            }
+          })
+        }
+        else{
+          localStorage.removeItem("access-token");
+          setLoading(false);
+        }
     });
     return () => {
       unSubscribe();

@@ -6,18 +6,20 @@ import { FaRegHeart } from "react-icons/fa";
 import UseAuth from "../Hooks/UseAuth";
 import { toast } from "sonner";
 import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const BookDetails = () => {
   const { id } = useParams();
   const {user} = UseAuth()
   const email = user?.email;
+  const axiosSecure=useAxiosSecure()
   const { data,isLoading,isError } = useBookDetails({ id });
   if(isLoading) {
     return <h2>Loading...</h2>
   }
   const handleAddToCart = async () => {
     try{
-        const res = await axios.patch("http://localhost:5000/users/add-cart", {
+        const res = await axiosSecure.patch("/users/add-cart", {
           email,
           id,
         });
@@ -32,7 +34,7 @@ const BookDetails = () => {
 
   const handleWishlist = async () => {
     try{
-        const res = await axios.patch("http://localhost:5000/users/add-wishlist", {
+        const res = await axiosSecure.patch("/users/add-wishlist", {
           email,
          id,
         });

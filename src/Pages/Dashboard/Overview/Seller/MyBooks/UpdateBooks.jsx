@@ -3,8 +3,10 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import * as Yup from "yup";
 import UseAuth from '../../../../../Hooks/UseAuth';
-import axios from 'axios';
+import useAxiosSecure from '../../../../../Hooks/useAxiosSecure';
+
 const UpdateBooks = () => {
+  const axiosSecure =useAxiosSecure()
     const {user }= UseAuth()
     const email = user?.email;
     const{ state}= useLocation()
@@ -37,7 +39,7 @@ const UpdateBooks = () => {
           const {title,author,image,price,stock,category,description} = values
           const bookInfo =  {title,author,image,price,stock,category,description,email}
           console.log(bookInfo)
-          const res = await axios.patch(`http://localhost:5000/book/update/${book._id}`, bookInfo)
+          const res = await axiosSecure.patch(`/book/update/${book._id}`, bookInfo)
           console.log(res.data);
         },
       });

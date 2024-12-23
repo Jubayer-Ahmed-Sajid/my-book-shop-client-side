@@ -2,9 +2,10 @@ import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import UseAuth from "../../../../../Hooks/UseAuth";
-import axios from "axios";
+import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 const AddBooks = () => {
     const {user }= UseAuth()
+    const axiosSecure=useAxiosSecure();
     const email = user?.email
     console.log(email)
   const formik = useFormik({
@@ -32,7 +33,7 @@ const AddBooks = () => {
       const {title,author,image,price,stock,category,description} = values
       const bookInfo =  {title,author,image,price,stock,category,description,email}
       console.log(bookInfo)
-      const res = await axios.post("http://localhost:5000/books", bookInfo)
+      const res = await axiosSecure.post("/books", bookInfo)
       console.log(res.data);
     },
   });
