@@ -27,7 +27,7 @@ const UpdateBooks = () => {
         validationSchema: Yup.object({
           title: Yup.string().required("Name is Required"),
           author: Yup.string().required("Author name is Required"),
-          image: Yup.string().url("Invalid url").required("Image url is required"),
+          image: Yup.string().required("Image url is required"),
           price: Yup.number().required("Price is required"),
           stock: Yup.number().required("Stock is required"),
           category: Yup.string().required("Category is required"),

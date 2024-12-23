@@ -43,7 +43,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
-            to="/all-books"
+            to="/dashboard/all-books"
             className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
@@ -65,7 +65,7 @@ const Sidebar = () => {
       <>
         <li>
           <NavLink
-            to="/cart"
+            to="/dashboard/cart"
             className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive
@@ -80,7 +80,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
-            to="/wishlist"
+            to="/dashboard/wishlist"
             className={({ isActive }) =>
               `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
                 isActive

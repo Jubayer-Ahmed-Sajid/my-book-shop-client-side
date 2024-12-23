@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './useAxiosSecure';
 
 const useBookDetails = ({id}) => {
+    console.log(id);
     const axiosSecure = useAxiosSecure();
     const {data,isLoading,isError,refetch} = useQuery({
         queryKey:[{id}],
