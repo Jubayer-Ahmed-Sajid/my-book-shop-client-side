@@ -5,6 +5,7 @@ import Loading from "../../../../../Components/Loading";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import BasicTable from "../../../../../Components/BasicTable";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MyBooks = () => {
   const { user } = UseAuth();
@@ -73,10 +74,14 @@ const MyBooks = () => {
       ),
     },
   ];
-  const handleUpdate = (book) => {
-    console.log(book);
+
+  const handleDelete = async(book) => {
+    axios.delete(`http://localhost:5000/books/${book._id}`).then((res) => {
+      console.log(res.data);
+      refetch();
+    });
+    
   };
-  const handleDelete = (data) => {};
   return (
     <div>
       <BasicTable data={data?.data} columns={columns} />
