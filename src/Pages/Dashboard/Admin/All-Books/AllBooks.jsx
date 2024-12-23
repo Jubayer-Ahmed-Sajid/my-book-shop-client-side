@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Components/Loading";
 import BasicTable from "../../../../Components/BasicTable";
 import useAdminBooks from "../../../../Hooks/useAdminBooks";
-
+import Swal from "sweetalert2";
 
 const AllBooks = () => {
   const { user } = UseAuth();
@@ -78,13 +78,35 @@ const AllBooks = () => {
 
   const handleDelete = async (book) => {
     try {
-      const res = await axiosSecure.delete(`/book/delete/${book._id}`);
-      console.log(res.data);
-      refetch();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axiosSecure.delete(`/book/delete/${book._id}`);
+          console.log(res.data);
+          refetch();
+
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      });
     } catch (error) {
-      console.error("Error deleting book:", error);
-    }
-  };
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+  }
+};
   return (
     <div>
       <BasicTable data={data?.data} columns={columns} />

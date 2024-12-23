@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 import UseAuth from "./UseAuth";
+import Loading from "../Components/Loading";
 
 // Custom hook to fetch user details
 const useUserDetails = () => {
-  // Get the current user from the authentication context
-  const { user } = UseAuth();
-  const email = user?.email;
-  console.log(email);
 
-  // Get the axios instance with public configurations
+  const { user,loading } = UseAuth();
+  if(loading){
+    return <Loading></Loading>
+  }
+  const email = user?.email;
+
   const axiosPublic = useAxiosPublic();
 
   // Use react-query to fetch user details based on email

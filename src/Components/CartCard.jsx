@@ -5,47 +5,62 @@ import { FaCartShopping } from "react-icons/fa6";
 import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
-const CartCard = ({ id,refetch }) => {
-    const { user, loading } = UseAuth();
-    if (loading) {
-        return <Loading></Loading>;
-    }
-    const email = user?.email;
+import Swal from 'sweetalert2'
+
+const CartCard = ({ id, refetch }) => {
+  const { user, loading } = UseAuth();
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  const email = user?.email;
   const { data, isLoading, isError } = useBookDetails({ id: id });
-  const axiosSecure=useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   if (isLoading) {
     return <Loading></Loading>;
   }
   const book = data?.data;
   const { title, image, author, price, category, stock, description } = book;
 
-    const handleRemoveItem = async () => {
-        try {
-        const res = await axiosSecure.patch("/users/remove-cart", {
-            email,
-            id,
-        });
-        refetch();
-        toast.success("Product removed from cart");
-        console.log(res?.data);
-        } catch (error) {
-        toast.error(`${error}`);
-        }
-    };
-
-    const handleBuy = async () => {
-        try {
-        const res = await axiosSecure.patch("/users/buy", {
-            email,
-            id,
-        });
-        refetch();
-        toast.success("Product bought successfully");
-        console.log(res?.data);
-        } catch (error) {
-        toast.error(`${error}`);
-        }
+  const handleRemoveItem = async () => {
+    try {
+      const res = await axiosSecure.patch("/users/remove-cart", {
+        email,
+        id,
+      });
+      refetch();
+      toast.success("Product removed from cart");
+      console.log(res?.data);
+    } catch (error) {
+      toast.error(`${error}`);
     }
+  };
+
+  const handleBuy = async () => {
+    try {
+      swal.fire({
+        title: "Are you sure you want to buy?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, buy it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axiosSecure.patch("/users/buy", {
+            email,
+            id,
+          });
+          refetch();
+          toast.success("Product bought successfully");
+        }
+      })
+      
+     
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+  };
 
   return (
     <div>
@@ -64,11 +79,17 @@ const CartCard = ({ id,refetch }) => {
         </div>
 
         <div className="grid lg:grid-cols-2 my-3 gap-2">
-          <button onClick={handleBuy} className="flex justify-center btn-primary btn items-center gap-3">
+          <button
+            onClick={handleBuy}
+            className="flex justify-center btn-primary btn items-center gap-3"
+          >
             <FaCartShopping className="text-2xl"></FaCartShopping> Buy Now
           </button>
 
-          <button onClick={handleRemoveItem} className="flex justify-center btn-primary btn  items-center gap-3">
+          <button
+            onClick={handleRemoveItem}
+            className="flex justify-center btn-primary btn  items-center gap-3"
+          >
             Remove Item
           </button>
         </div>
