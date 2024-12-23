@@ -19,10 +19,48 @@ const Sidebar = () => {
  
   const role = data?.data?.role;
   const isAdmin = data?.data?.isAdmin;
+  console.log(isAdmin);
   let options;
 
   // Determining which options to render
-  if (role === "buyer") {
+  if (isAdmin) {
+    options = (
+      <>
+        <li>
+          <NavLink
+            to="/dashboard/all-users"
+            className={({ isActive }) =>
+              `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
+              }`
+            }
+          >
+            <LuUsersRound className="text-2xl" />
+            All Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/all-books"
+            className={({ isActive }) =>
+              `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
+              }`
+            }
+          >
+            <GiBookshelf className="text-2xl" />
+            All Books
+          </NavLink>
+        </li>
+      </>
+    );
+  }
+
+ else if (role === "buyer") {
     options = (
       <>
         <li>
@@ -92,43 +130,7 @@ const Sidebar = () => {
         </li>
       </>
     );
-  } else if (isAdmin) {
-    options = (
-      <>
-        <li>
-          <NavLink
-            to="/all-users"
-            className={({ isActive }) =>
-              `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
-              }`
-            }
-          >
-            <LuUsersRound className="text-2xl" />
-            All Users
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/all-books"
-            className={({ isActive }) =>
-              `my-2 p-2 w-full rounded-md flex items-center gap-2 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "bg-blue-700 text-gray-100 hover:bg-primary hover:text-white transition"
-              }`
-            }
-          >
-            <GiBookshelf className="text-2xl" />
-            All Books
-          </NavLink>
-        </li>
-      </>
-    );
-  }
-
+  } 
   return (
     <div className="h-full min-h-screen p-4">
       <ul>

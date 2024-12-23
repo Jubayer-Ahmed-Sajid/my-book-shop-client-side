@@ -12,7 +12,6 @@ const Home = () => {
     console.log(data?.data)
     return (
         <div>
-            <h2 className="text-3xl">This is home</h2>
             <Banner></Banner>
             <Featured></Featured>
             <FAQ></FAQ>
