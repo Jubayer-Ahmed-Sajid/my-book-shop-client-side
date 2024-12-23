@@ -12,6 +12,7 @@ const MyBooks = () => {
   const { user } = UseAuth();
   const email = user?.email;
   const { data, isLoading, isError, refetch } = useSellerBooks({ email });
+  console.log(data);
   const axiosSecure = useAxiosSecure();
   if (isLoading) {
     return (
@@ -58,11 +59,10 @@ const MyBooks = () => {
       accessorKey: "update",
       cell: ({ row }) => (
         <Link
-         
           to={`/dashboard/update/${row.original._id}`}
-          state={ {state:row.original }}
+          state={{ state: row.original }}
         >
-          <FaEdit className="text-center text-yellow-600 text-xl w-full"/>
+          <FaEdit className="text-center text-yellow-600 text-xl w-full" />
         </Link>
       ),
     },
@@ -71,18 +71,20 @@ const MyBooks = () => {
       accessorKey: "delete",
       cell: ({ row }) => (
         <button onClick={() => handleDelete(row.original)}>
-          <FaTrashAlt className="text-red-600 text-xl"/>
+          <FaTrashAlt className="text-red-600 text-xl" />
         </button>
       ),
     },
   ];
 
-  const handleDelete = async(book) => {
-    axiosSecure.delete(`/books/${book._id}`).then((res) => {
+  const handleDelete = async (book) => {
+    try {
+      const res = await axiosSecure.delete(`/book/delete/${book._id}`);
       console.log(res.data);
       refetch();
-    });
-    
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
   };
   return (
     <div>

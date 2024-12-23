@@ -11,8 +11,6 @@ const UpdateBooks = () => {
     const email = user?.email;
     const{ state}= useLocation()
     const book = state?.state
-    console.log(book)
-
 
     const formik = useFormik({
         initialValues: {
@@ -40,7 +38,7 @@ const UpdateBooks = () => {
           const bookInfo =  {title,author,image,price,stock,category,description,email}
           console.log(bookInfo)
           const res = await axiosSecure.patch(`/book/update/${book._id}`, bookInfo)
-          console.log(res.data);
+          console.log(res?.data);
         },
       });
 

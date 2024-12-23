@@ -13,6 +13,9 @@ import AddBooks from "../Pages/Dashboard/Overview/Seller/AddBooks/AddBooks";
 import BookDetails from "../Components/BookDetails";
 import MyBooks from "../Pages/Dashboard/Overview/Seller/MyBooks/MyBooks";
 import UpdateBooks from "../Pages/Dashboard/Overview/Seller/MyBooks/UpdateBooks";
+import PrivateRoute from "./PrivateRoutes/PrivateRoute";
+import SellerRoute from "./PrivateRoutes/SellerRoute";
+import AdminRoutes from "./PrivateRoutes/AdminRoutes";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -50,7 +53,7 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
     children: [
       {
         path: "/dashboard/overview",
@@ -58,15 +61,31 @@ const routes = createBrowserRouter([
       },
       {
         path: "/dashboard/add-books",
-        element: <AddBooks></AddBooks>,
+        element:<SellerRoute><AddBooks></AddBooks></SellerRoute> ,
       },
       {
         path:'/dashboard/my-books',
-        element:<MyBooks></MyBooks>
+        element:<SellerRoute><MyBooks></MyBooks> </SellerRoute> 
       },
       {
         path:'/dashboard/update/:id',
-        element:<UpdateBooks></UpdateBooks>
+        element:<SellerRoute><UpdateBooks></UpdateBooks> </SellerRoute>
+      },
+      {
+        path: "/dashboard/all-books",
+        element:<AdminRoutes></AdminRoutes>
+      },
+      {
+        path: "/dashboard/all-users",
+        element:<AdminRoutes></AdminRoutes>
+      },
+      {
+        path: "/dashboard/wishlist",
+      
+      },
+      {
+        path: "/dashboard/cart",  
+        
       }
     ],
   },

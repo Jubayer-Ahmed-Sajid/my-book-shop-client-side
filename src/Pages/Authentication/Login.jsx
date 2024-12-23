@@ -3,11 +3,12 @@ import UseAuth from "../../Hooks/UseAuth";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { login,googleSignin } = UseAuth();
+  const { login, googleSignin } = UseAuth();
+  const navigate =useNavigate()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -35,8 +36,8 @@ const Login = () => {
       toast.loading("Logging in...");
 
       const { email, password } = values;
-      await login(email, password);
       try {
+        await login(email, password);
         const passed = Date.now() - startTime;
         if (passed < minDelay) {
           await new Promise((resolve) =>
@@ -47,35 +48,33 @@ const Login = () => {
         toast.dismiss();
         toast.success("User successfully logged in!!");
         navigate(location?.state ? location?.state : "/");
-        location.reload();
-      } catch (err) {
-        toast.dismiss()
-        toast.error(`${err.message}`)
+      } catch (error) {
+        toast.dismiss();
+        toast.error(`${error.message}`);
       }
     },
   });
 
   const handleGoogleSignin = async () => {
-      const res = await googleSignin();
-      try {
-        const minDelay = 1000;
-        const startTime = Date.now();
-        toast.loading("Logging in...");
-  
-        const passed = Date.now() - startTime;
-        if (passed < minDelay) {
-          await new Promise((resolve) => setTimeout(resolve, minDelay - passed));
-        }
-       
-        toast.dismiss();
-        toast.success("User successfully logged in!!");
-        navigate(location?.state ? location?.state : "/");
-        
-      } catch (error) {
-        toast.dismiss()
-        toast.error(`${error.message}`)
+    const res = await googleSignin();
+    try {
+      const minDelay = 1000;
+      const startTime = Date.now();
+      toast.loading("Logging in...");
+
+      const passed = Date.now() - startTime;
+      if (passed < minDelay) {
+        await new Promise((resolve) => setTimeout(resolve, minDelay - passed));
       }
-    };
+
+      toast.dismiss();
+      toast.success("User successfully logged in!!");
+      navigate(location?.state ? location?.state : "/");
+    } catch (error) {
+      toast.dismiss();
+      toast.error(`${error.message}`);
+    }
+  };
 
   return (
     <div className=" w-full my-8 mx-12">
@@ -144,14 +143,16 @@ const Login = () => {
             <h2 className="flex justify-center items-center gap-4">
               Login by Google
             </h2>
-
           </button>
         </div>
 
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <h2>
-           New to the site ?
-            <Link className="text-blue-400 ml-2 hover:underline" to="/registration">
+            New to the site ?
+            <Link
+              className="text-blue-400 ml-2 hover:underline"
+              to="/registration"
+            >
               Register
             </Link>
           </h2>

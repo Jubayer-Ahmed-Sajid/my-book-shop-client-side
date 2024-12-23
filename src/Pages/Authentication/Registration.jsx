@@ -64,8 +64,8 @@ const Registration = () => {
       const photoURL = res?.data?.data?.display_url;
 
       // User creation with email and password
-      const createdUser = await createUser(email, password);
       try {
+        const createdUser = await createUser(email, password);
        console.log(createdUser)
         const isAdmin = false;
         const userInfo = {
@@ -89,7 +89,7 @@ const Registration = () => {
         toast.dismiss();
         toast.success("User successfully created!!");
         navigate(location?.state ? location?.state : "/");
-        location.reload();
+        
       } catch (err) {
         toast.dismiss()
         toast.error(`${err.message}`)
