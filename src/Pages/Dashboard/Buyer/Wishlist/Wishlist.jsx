@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Loading from "../../../../Components/Loading";
 import useUserDetails from "../../../../Hooks/useUserDetails";
-import WishlistCard from "../../../../Components/wishlistCard";
 import UseAuth from "../../../../Hooks/UseAuth";
+import WishlistCard from "../../../../Components/WishlistCard.jsx"
 
 const Wishlist = () => {
   const { user, loading } = UseAuth();
@@ -20,7 +20,7 @@ const Wishlist = () => {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
         {wishlists.length === 0 ? (
-          <div className="text-center text-red-500 text-2xl font-bold w-screen h-screen flex items-center justify-center">
+          <div className="text-center text-red-500 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
             No items in wishlist
           </div>
         ) : (

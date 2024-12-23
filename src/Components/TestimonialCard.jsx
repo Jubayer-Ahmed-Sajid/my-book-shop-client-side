@@ -16,6 +16,7 @@ const TestimonialCard = ({ testimonial }) => {
 
       <StarRatings
           rating={rating}
+          starDimension="30px"
           starRatedColor="gold"
           numberOfStars={5}
           name='rating'

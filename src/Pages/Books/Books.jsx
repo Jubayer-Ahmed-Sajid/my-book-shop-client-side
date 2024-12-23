@@ -45,7 +45,7 @@ const Books = () => {
 
   return (
     <div>
-      <div className="flex justify-between mx-6">
+      <div className="lg:flex justify-between mx-2">
         <SearchBar setSearch={setSearch}></SearchBar>
         <SortBar setSorts={setSorts}></SortBar>
       </div>

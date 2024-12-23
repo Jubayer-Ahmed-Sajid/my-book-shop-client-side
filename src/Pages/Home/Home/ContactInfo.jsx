@@ -8,48 +8,49 @@ import { TiSocialFacebookCircular } from "react-icons/ti";
 
 const ContactInfo = () => {
   return (
-    <div className=" text-white">
+    <div>
       <h2 className="text-center text-xl text-bold mt-12 text-accent">
         Contact info
       </h2>
       <div className="divider divider-accent w-1/3 mx-auto"></div>
-      <div className="flex bg-secondary p-6 rounded-sm w-full justify-between">
+      <div className="lg:flex bg-base-300 p-6 rounded-sm w-full justify-between">
         <div className="p-4 space-y-3">
-          <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold text-white">
+          <div className="flex gap-4 items-center">
+            <p className="text-lg font-semibold ">
               <HiOutlineMailOpen className="text-2xl" />
             </p>
             <p>sajid661ac@gmail.com</p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold ">
               <PiWhatsappLogoDuotone className="text-2xl" />
             </p>
             <p>+880 1843278491</p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold ">
               <TiSocialFacebookCircular className="text-2xl" />
             </p>
             <p>https://www.facebook.com/book-shop</p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold ">
               <FaXTwitter className="text-2xl" />
             </p>
             <p>https://www.x.com/book-shop</p>
           </div>
         </div>
+
         <div className="p-4 space-y-3">
           <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold ">
               <TbHelpSquareRounded className="text-2xl" />
             </p>
             <p>+123 45678</p>
           </div>
           <div className="flex gap-2 items-center">
               <IoLocationOutline className="text-2xl" />
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold ">
               123 Book Haven Street, <br />
               Literary District, Bibliopolis, <br />
               Readerville, NY 12345, USA
@@ -58,6 +59,7 @@ const ContactInfo = () => {
           </div>
          
         </div>
+
       </div>
     </div>
   );

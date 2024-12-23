@@ -11,7 +11,7 @@ import Loading from "../Loading";
 import UseAuth from "../../Hooks/UseAuth";
 
 const Sidebar = () => {
- 
+      const {logout} = UseAuth();
      const { data,isLoading,isError } = useUserDetails();
      if(isLoading){
          return <Loading></Loading>
@@ -134,7 +134,7 @@ const Sidebar = () => {
   return (
     <div className="h-full min-h-screen p-4">
       <ul>
-        <h2 className="text-primary text-xl font-bold py-8">My book Shop</h2>
+        <h2 className="text-primary text-xl text-center font-bold py-8">My book Shop</h2>
         {options}
         <li>
           <NavLink
@@ -153,7 +153,7 @@ const Sidebar = () => {
         </li>
 
         <li>
-          <button className="my-2 bg-blue-700 text-base-100 p-2 w-full rounded-md flex items-center gap-2">
+          <button onClick={()=>logout()} className="my-2 bg-blue-700 text-base-100 p-2 w-full rounded-md flex items-center gap-2">
             <MdLogout className="text-2xl" />
             Logout
           </button>

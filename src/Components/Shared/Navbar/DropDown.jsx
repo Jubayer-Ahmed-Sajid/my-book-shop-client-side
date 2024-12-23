@@ -24,7 +24,7 @@ const DropDown = () => {
          <Link to="/dashboard/overview">Dashboard</Link>
         </li>
         <li>
-         <button onClick={()=> logout()} className="btn-primary">Logout</button>
+         <button onClick={()=> logout()} className="btn-primary btn btn-md my-2">Logout</button>
         </li>
       </ul>
     </div>

@@ -13,10 +13,13 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <div className='container mx-auto'>
             <Featured></Featured>
             <FAQ></FAQ>
             <ContactInfo></ContactInfo>
             <Testimonials></Testimonials>
+
+            </div>
         </div>
     );
 };
