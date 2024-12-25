@@ -12,8 +12,7 @@ const Categories = () => {
     category: "",
     author: "",
   });
-  const categories = data?.data?.categories;
-  const topCategories = categories?.slice(0, 4);
+
 
   if (isLoading) {
     return <div>Loading...</div>;
