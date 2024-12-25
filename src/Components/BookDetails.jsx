@@ -55,7 +55,7 @@ const BookDetails = () => {
   };
   const { title, author, image, price, stock, category, description } =
     data?.data;
-    const isSeller = userDetails?.data?.role;
+    const isSeller = userDetails?.data?.role=='seller';
     const isAdmin = userDetails?.data?.isAdmin;
     const cart = userDetails?.data?.cart || [];
     const wishlist = userDetails?.data?.wishlist || [];
@@ -86,7 +86,7 @@ const BookDetails = () => {
               </p>
             </div>
             <div className="lg:flex mt-4 space-y-2 justify-between">
-              <button disabled={isFound ||isAdmin||isSeller }  onClick={handleAddToCart} className="btn lg:w-1/3 w-full btn-primary flex gap-2">
+              <button disabled={isFound ||isAdmin||isSeller }  onClick={handleAddToCart} className="btn bg-accent_1 lg:w-1/3 w-full btn-primary flex gap-2">
                 <MdAddShoppingCart
                   className="text-2xl"
                  
@@ -94,7 +94,7 @@ const BookDetails = () => {
                 Add to cart
               </button>
               <button disabled={isFoundWishlist ||isAdmin||isSeller}
-                className="btn w-full lg:w-1/3 btn-primary flex gap-2"
+                className="btn w-full lg:w-1/3 bg-accent_2 btn-primary flex gap-2"
                 onClick={handleWishlist}
               >
                 <FaRegHeart />

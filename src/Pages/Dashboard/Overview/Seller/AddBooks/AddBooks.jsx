@@ -57,7 +57,7 @@ const AddBooks = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.title}
-              className="w-full mx-auto rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-gray-700 outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="w-full mx-auto rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder=" Enter book name"
             />
             <br />
@@ -77,7 +77,7 @@ const AddBooks = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.author}
-              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-gray-700 outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder="Enter author name"
             />
             {formik.touched.author && formik.errors.author ? (
@@ -93,7 +93,7 @@ const AddBooks = () => {
               id="image"
               name="image"
               type="url"
-              className="w-full mx-auto rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-gray-700 outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="w-full mx-auto rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               onChange={formik.handleChange}
               value={formik.values.image}
               onBlur={formik.handleBlur}
@@ -116,7 +116,7 @@ const AddBooks = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.price}
-              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-gray-700 outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder="price"
             />
             {formik.touched.price && formik.errors.price ? (
@@ -134,7 +134,7 @@ const AddBooks = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.stock}
-              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-gray-700 outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder="stock"
             />
             {formik.touched.stock && formik.errors.stock ? (

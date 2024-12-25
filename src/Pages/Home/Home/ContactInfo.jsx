@@ -1,65 +1,116 @@
 import React from "react";
-import { FaXTwitter } from "react-icons/fa6";
-import { HiOutlineMailOpen } from "react-icons/hi";
-import { IoLocationOutline } from "react-icons/io5";
-import { PiWhatsappLogoDuotone } from "react-icons/pi";
-import { TbHelpSquareRounded } from "react-icons/tb";
 import { TiSocialFacebookCircular } from "react-icons/ti";
+import { FaEnvelopeOpenText, FaMapMarkerAlt } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { TbHelpSquareRounded } from "react-icons/tb";
 
 const ContactInfo = () => {
   return (
-    <div>
-      <h2 className="text-center text-xl text-bold mt-12 text-accent">
-        Contact info
+    <div className="bg-gray-100 w-full min-h-screen p-6">
+      <h2 className="text-center text-xl lg:text-3xl font-bold mt-12 text-primary">
+        Contact Information
       </h2>
-      <div className="divider divider-accent w-1/3 mx-auto"></div>
-      <div className="lg:flex bg-base-300 p-6 rounded-sm w-full justify-between">
-        <div className="p-4 space-y-3">
-          <div className="flex gap-4 items-center">
-            <p className="text-lg font-semibold ">
-              <HiOutlineMailOpen className="text-2xl" />
-            </p>
-            <p>sajid661ac@gmail.com</p>
+      <div className="divider lg:w-1/3 mx-auto lg:my-6 bg-accent_1 h-1"></div>
+      
+      <div className="space-y-6  mx-auto bg-white p-8 rounded-lg shadow-lg">
+
+        <div className="lg:flex gap-4 items-center justify-between">
+
+          <div className="space-y-4">
+            <div className="flex lg:gap-4 items-center">
+              <TiSocialFacebookCircular className="text-xl lg:text-4xl text-primary" />
+              <p className="lg:text-lg text-sm font-semibold text-secondary">
+                <a
+                  href="https://www.facebook.com/book-shop"
+                  target="_blank"
+                 
+                >
+                  https://www.facebook.com/book-shop
+                </a>
+              </p>
+            </div>
+
+            <div className="flex gap-4 items-center">
+              <FaXTwitter className="text-4xl text-primary" />
+              <p className="lg:text-lg text-sm  font-semibold text-secondary">
+                <a
+                  href="https://www.x.com/book-shop"
+                  target="_blank"
+                  
+                >
+                  https://www.x.com/book-shop
+                </a>
+              </p>
+            </div>
+
+            <div className="flex gap-4 items-center">
+              <FaEnvelopeOpenText className="text-4xl text-primary" />
+              <p className="lg:text-lg text-sm  font-semibold text-secondary">
+                contact@bookshop.com
+              </p>
+            </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold ">
-              <PiWhatsappLogoDuotone className="text-2xl" />
-            </p>
-            <p>+880 1843278491</p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold ">
-              <TiSocialFacebookCircular className="text-2xl" />
-            </p>
-            <p>https://www.facebook.com/book-shop</p>
-          </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold ">
-              <FaXTwitter className="text-2xl" />
-            </p>
-            <p>https://www.x.com/book-shop</p>
+          <div className="space-y-4">
+            <div className="flex gap-4 items-center">
+              <FaMapMarkerAlt className="text-4xl text-primary" />
+              <p className="lg:text-lg text-sm  font-semibold text-secondary">
+                123 Book St, Reading City, 45678
+              </p>
+            </div>
+
+            <div className="flex gap-4 items-center">
+              <TbHelpSquareRounded className="text-4xl text-primary" />
+              <p className="lg:text-lg text-sm   font-semibold text-secondary">+123 45678</p>
+            </div>
           </div>
         </div>
 
-        <div className="p-4 space-y-3">
-          <div className="flex gap-2 items-center">
-            <p className="text-lg font-semibold ">
-              <TbHelpSquareRounded className="text-2xl" />
-            </p>
-            <p>+123 45678</p>
-          </div>
-          <div className="flex gap-2 items-center">
-              <IoLocationOutline className="text-2xl" />
-            <p className="text-lg font-semibold ">
-              123 Book Haven Street, <br />
-              Literary District, Bibliopolis, <br />
-              Readerville, NY 12345, USA
-            </p>
-            <p> </p>
-          </div>
-         
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold text-primary mb-4">
+            Send Us a Message
+          </h3>
+          <form className="space-y-4">
+            <div>
+              <label className="block text-secondary mb-2" htmlFor="name">
+                Name
+              </label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded-lg"
+                type="text"
+                id="name"
+                name="name"
+              />
+            </div>
+            <div>
+              <label className="block text-secondary mb-2" htmlFor="email">
+                Email
+              </label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded-lg"
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div>
+              <label className="block text-secondary mb-2" htmlFor="message">
+                Message
+              </label>
+              <textarea
+                className="w-full p-2 border border-gray-300 rounded-lg"
+                id="message"
+                name="message"
+                rows="4"
+              ></textarea>
+            </div>
+            <button
+              className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+              type="submit"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
-
       </div>
     </div>
   );

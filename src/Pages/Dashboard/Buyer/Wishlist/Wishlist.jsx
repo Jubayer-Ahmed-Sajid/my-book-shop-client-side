@@ -20,7 +20,7 @@ const Wishlist = () => {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
         {wishlists.length === 0 ? (
-          <div className="text-center text-red-500 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
+          <div className="text-center text-accent_2 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
             No items in wishlist
           </div>
         ) : (

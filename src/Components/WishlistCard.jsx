@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
 
-const WishlistCard = ({ id,refetch }) => {
+const WishlistCard = ({ id, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { user, loading } = UseAuth();
   if (loading) {
@@ -63,11 +63,17 @@ const WishlistCard = ({ id,refetch }) => {
         </p>
       </div>
       <div className="grid lg:grid-cols-2 my-3 gap-1">
-        <button onClick={handleAddToCart} className="flex justify-center btn-primary btn items-center gap-3">
+        <button
+          onClick={handleAddToCart}
+          className="flex justify-center btn-primary btn items-center gap-3"
+        >
           <FaCartShopping className="text-xl"></FaCartShopping>Add to Cart
         </button>
 
-        <button onClick={handleRemoveItem} className="flex justify-center btn-primary btn  items-center gap-3">
+        <button
+          onClick={handleRemoveItem}
+          className="flex justify-center btn-primary btn  items-center gap-3"
+        >
           Remove Item
         </button>
       </div>

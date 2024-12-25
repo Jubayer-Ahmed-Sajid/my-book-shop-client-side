@@ -23,13 +23,13 @@ const Books = () => {
 
   if (isLoading) {
     return (
-      <div className="text-red-500 w-screen h-screen flex items-center justify-center">
+      <div className="text-accent_2 w-screen h-screen flex items-center justify-center">
         <Loading></Loading>
       </div>
     );
   }
   if(isError){
-    return <div className="text-red-500 w-screen h-screen flex items-center justify-center" >
+    return <div className="text-accent_2 w-screen h-screen flex items-center justify-center" >
       <h2>Something went wrong !!</h2> 
       <Link to="/" className="btn ml-4 btn-sm btn-warning">Back to Home</Link>
     </div>

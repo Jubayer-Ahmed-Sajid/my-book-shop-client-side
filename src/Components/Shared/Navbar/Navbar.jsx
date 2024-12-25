@@ -33,7 +33,7 @@ const Navbar = () => {
      
     </>
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar z-20 relative bg-white shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,10 +59,10 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost text-2xl text-primary font-bold">Books Corner</a>
+        <a href="/" className="btn hidden lg:block btn-ghost text-2xl text-primary font-bold">Books Corner</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu text-xl menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
       {

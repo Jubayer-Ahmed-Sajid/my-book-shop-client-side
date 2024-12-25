@@ -37,7 +37,7 @@ const CartCard = ({ id, refetch }) => {
 
   const handleBuy = async () => {
     try {
-      swal.fire({
+      Swal.fire({
         title: "Are you sure you want to buy?",
         text: "You won't be able to revert this!",
         icon: "warning",
