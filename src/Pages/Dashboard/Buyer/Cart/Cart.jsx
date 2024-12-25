@@ -17,7 +17,7 @@ const Cart = () => {
   const cart = data?.data?.cart;
 
   return (
-    <div className="md:grid grid-cols-3 gap-4 p-4">
+    <div className="md:grid grid-cols-3 gap-x-5 gap-y-8 p-4">
       {
         cart?.length === 0 ? <div className='text-center text-accent_2 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center'>No items in cart</div> :(
           cart?.map((cartItem) => {
