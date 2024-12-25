@@ -7,21 +7,28 @@ const Footer = () => {
     <footer className="bg-primary text-white py-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-between">
+
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h2 className="text-2xl font-bold mb-4">Books Corner</h2>
             <p className="text-white">
-              Your gateway to endless adventures, heartfelt stories, and boundless knowledge. Explore our collection and let the magic of books inspire your next journey!
+              Your gateway to endless adventures, heartfelt stories,
+              <br /> and boundless 
+
+              knowledge. Explore our collection 
+              <br />and let the magic of books inspire your next journey!
             </p>
           </div>
+
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h2 className="text-xl font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2">
               <li><Link to="/" className="hover:text-accent_1 transition-colors">Home</Link></li>
               <li><Link to="/books" className="hover:text-accent_1 transition-colors">Books</Link></li>
-              <li><Link to="/about" className="hover:text-accent_1 transition-colors">About</Link></li>
-              <li><Link to="/contact" className="hover:text-accent_1 transition-colors">Contact</Link></li>
+              <li><Link to="/about-us" className="hover:text-accent_1 transition-colors">About</Link></li>
+              <li><Link to="/contact-us" className="hover:text-accent_1 transition-colors">Contact</Link></li>
             </ul>
           </div>
+
           <div className="w-full md:w-1/3">
             <h2 className="text-xl font-bold mb-4">Follow Us</h2>
             <div className="flex space-x-4">
@@ -39,9 +46,10 @@ const Footer = () => {
               </a>
             </div>
           </div>
+          
         </div>
-        <div className="mt-8 text-center text-secondary">
-          <p>&copy; 2023 Books Corner. All rights reserved.</p>
+        <div className="mt-8 text-center text-white">
+        <p>Copyright © {new Date().getFullYear()} - All right reserved by Books Corner</p>
         </div>
       </div>
     </footer>
