@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaEnvelopeOpenText, FaXTwitter } from "react-icons/fa6";
 import { TiSocialFacebookCircular } from "react-icons/ti";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const ContactUs = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    
+    
+
+    emailjs
+      .sendForm("service_zq0li8k", "template_7awov3p", form.current,
+         {
+        publicKey: "XtMf4VrUG3doEiAya",
+      })
+      .then(
+        (res) => {
+          toast.success("Message sent successfully");
+          form.current.reset();
+        },
+        (error) => {
+          toast.error("Message not sent");
+        }
+      );
+
+  };
+
   return (
     <div className="my-20 container mx-auto">
       <div className="bg-accent_2 mx-6 shadow-lg p-6 rounded-lg">
@@ -69,7 +94,7 @@ const ContactUs = () => {
               <h3 className="text-2xl font-bold text-accent_1 mb-4">
                 Send Us a Message
               </h3>
-              <form className="space-y-4">
+              <form ref={form} onSubmit={sendEmail} className="space-y-4">
                 <div>
                   <label className="block text-secondary mb-2" htmlFor="name">
                     Name
