@@ -11,7 +11,7 @@ const Testimonial = () => {
 
   if (isLoading) return <p><Loading></Loading></p>;
   if (isError) return <p>Error loading testimonials.</p>;
-  console.log(testimonials?.data);
+
   return (
     <div>
       <h2 className="text-center text-xl lg:text-3xl font-bold mt-12 text-primary">

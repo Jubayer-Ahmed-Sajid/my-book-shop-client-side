@@ -20,6 +20,7 @@ import AllUsers from "../Pages/Dashboard/Admin/All-Users/AllUsers";
 import AllBooks from "../Pages/Dashboard/Admin/All-Books/AllBooks";
 import Wishlist from "../Pages/Dashboard/Buyer/Wishlist/Wishlist";
 import Cart from "../Pages/Dashboard/Buyer/Cart/Cart";
+import Category from "../Components/Category";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,11 @@ const routes = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path:"categories/:category",
+        element:<Category></Category>
+
       },
       {
         path: "/book/:id",

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
-import useUserDetails from "../../../Hooks/useUserDetails";
 import UseAuth from "../../../Hooks/UseAuth";
+import Loading from "../../Loading";
 
 const Navbar = () => {
-  const {data} = useUserDetails()
-  const {user} = UseAuth()
+  const { user, loading } = UseAuth();
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  
   const navLinks = (
     <>
       <li>
@@ -22,16 +26,18 @@ const Navbar = () => {
         <NavLink to="/contact-us">Contact us</NavLink>
       </li>
     </>
-
   );
-    const navEnd = <>
-    
-        <NavLink className="btn px-[26px] btn-md btn-primary" to="/login">Login</NavLink>
-      
-   
-        <NavLink className="btn btn-md btn-primary" to="/registration">Register</NavLink>
-     
-    </>
+  const navEnd = (
+    <div>
+      <NavLink className="btn px-[26px] btn-md btn-primary" to="/login">
+        Login
+      </NavLink>
+
+      <NavLink className="btn btn-md btn-primary" to="/registration">
+        Register
+      </NavLink>
+    </div>
+  );
   return (
     <div className="navbar z-20 relative bg-white shadow-lg">
       <div className="navbar-start">
@@ -59,18 +65,22 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a href="/" className="btn hidden lg:block btn-ghost text-2xl text-primary font-bold">Books Corner</a>
+        <a
+          href="/"
+          className="btn hidden lg:block btn-ghost text-2xl text-primary font-bold"
+        >
+          Books Corner
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu text-xl menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-      {
-        user ?  <DropDown></DropDown> : <div className="flex gap-2">
-{navEnd}
-        </div>
-      }
-      
+        {user ? (
+          <DropDown></DropDown>
+        ) : (
+          <div className="flex gap-2">{navEnd}</div>
+        )}
       </div>
     </div>
   );

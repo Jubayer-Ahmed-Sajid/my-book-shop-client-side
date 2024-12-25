@@ -10,7 +10,6 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../FirebaseConfig";
-import axios from "axios";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
@@ -40,7 +39,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
       if(currentUser){
           axiosPublic.post('/jwt',{email:currentUser.email})
           .then((data)=>{
@@ -48,6 +46,10 @@ const AuthProvider = ({ children }) => {
               localStorage.setItem("access-token",data?.data?.token)
               setLoading(false)
             }
+          })
+          .catch((error)=>{
+            console.error("Error fetching jwt token:", error);
+            setLoading(false);
           })
         }
         else{

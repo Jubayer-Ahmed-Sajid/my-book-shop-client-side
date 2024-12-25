@@ -158,18 +158,17 @@ const AddBooks = () => {
             <option disabled selected>
               Select Category
             </option>
-            <option value="fiction">Fiction</option>
-            <option value="non-fiction">Non-Fiction</option>
-            <option value="mystery">Mystery</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="science-fiction">Science Fiction</option>
-            <option value="romance">Romance</option>
-            <option value="thriller">Thriller</option>
-            <option value="biography">Biography</option>
-            <option value="history">History</option>
-            <option value="self-help">Self-Help</option>
-            <option value="children">Children's Books</option>
-            <option value="young-adult">Young Adult</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Science-Fiction">Science Fiction</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Biography">Biography</option>
+            <option value="History">History</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Children">Children's Books</option>
           </select>
           {formik.touched.category && formik.errors.category ? (
             <p className="text-red-400 text-md">{formik.errors.category}</p>
