@@ -1,26 +1,11 @@
 import React from "react";
-import useAllBooks from "../../../Hooks/useAllBooks";
 import { Link } from "react-router-dom";
 import horrorImg from '../../../assets/rb_2092.png'
 import scienceFictionImg from '../../../assets/2150793585.jpg'
 import philosophyImg from '../../../assets/2148882597.jpg'
 
 const Categories = () => {
-  const { data, isLoading, isError } = useAllBooks({
-    search: "",
-    sorts: "",
-    category: "",
-    author: "",
-  });
 
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error loading categories</div>;
-  }
 
   return (
     <div>
