@@ -18,7 +18,7 @@ const Banner = () => {
         <p className="mb-5 text-lg">
           Your gateway to endless adventures, heartfelt stories, and boundless knowledge. Explore our collection and let the magic of books inspire your next journey!
         </p>
-        <Link to="/books" className="btn bg-accent_1 text-white py-2 px-4 rounded-lg hover:bg-accent_2 transition-colors">
+        <Link to="/books" className="btn border-none text-xl bg-accent_1 text-white py-2 px-4 rounded-lg hover:bg-accent_2 transition-colors">
           Get Started
         </Link>
       </div>

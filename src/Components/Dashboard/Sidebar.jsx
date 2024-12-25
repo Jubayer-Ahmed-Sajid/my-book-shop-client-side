@@ -26,8 +26,22 @@ const Sidebar = () => {
     { name: "Home", path: "/", icon: <IoHomeOutline /> },
     { name: "Overview", path: "/dashboard/overview", icon: <GrOverview  /> },
   ];
-
-  if (role === "seller") {
+  if (isAdmin) {
+    options = [
+      ...options,
+      {
+        name: "All Users",
+        path: "/dashboard/all-users",
+        icon: <LuUsersRound />,
+      },
+      {
+        name:"All Books",
+        path:"/dashboard/all-books",
+        icon:<GiBookshelf />
+      }
+    ];
+  }
+ else if (role === "seller") {
     options = [
       ...options,
       { name: "My Books", path: "/dashboard/my-books", icon: <GiBookshelf /> },
@@ -39,7 +53,7 @@ const Sidebar = () => {
     ];
   }
 
-  if (role === "buyer") {
+else  if (role === "buyer") {
     options = [
       ...options,
       { name: "Cart", path: "/dashboard/cart", icon: <TiShoppingCart /> },
@@ -47,16 +61,7 @@ const Sidebar = () => {
     ];
   }
 
-  if (isAdmin) {
-    options = [
-      ...options,
-      {
-        name: "All Users",
-        path: "/dashboard/all-users",
-        icon: <LuUsersRound />,
-      },
-    ];
-  }
+ 
 
   return (
     <div className="bg-primary text-white min-h-screen p-4">

@@ -8,10 +8,7 @@ import useAdminBooks from "../../../../Hooks/useAdminBooks";
 import Swal from "sweetalert2";
 
 const AllBooks = () => {
-  const { user } = UseAuth();
-  const email = user?.email;
   const { data, isLoading, isError, refetch } = useAdminBooks();
-  console.log(data?.data);
   const axiosSecure = useAxiosSecure();
   if (isLoading) {
     return (
