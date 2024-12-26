@@ -127,12 +127,15 @@ const ContactInfo = () => {
                 rows="4"
               ></textarea>
             </div>
+            <div className="w-full flex justify-center">
+
             <button
-              className="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+              className="w-full lg:w-1/3 mx-auto bg-primary text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
               type="submit"
             >
               Send Message
             </button>
+            </div>
           </form>
         </div>
       </div>
