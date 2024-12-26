@@ -21,8 +21,8 @@ Check out the live application [here](https://book-shop-jp-project.vercel.app).
 - **Wishlist**: Buyers can add books to their wishlist for future reference.
 
 ### 4. Order Management
-- **Order History**: Buyers can view their order history and track the status of their orders.
-- **Order Management for Sellers**: Sellers can manage orders, update order statuses, and view sales reports.
+- **Order History**: Buyers can view their order history such as products added to the cart or wishlist.
+
 
 ### 5. User Management
 - **Profile Management**: Users can view and update their profile information.
@@ -44,7 +44,7 @@ Check out the live application [here](https://book-shop-jp-project.vercel.app).
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/my-book-shop.git
+   git clone https://github.com/Jubayer-Ahmed-Sajid/my-book-shop-client-side
    ```
 2. Navigate to the project directory::
    ```bash
