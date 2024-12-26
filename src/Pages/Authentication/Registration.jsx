@@ -154,8 +154,8 @@ const Registration = () => {
         onSubmit={formik.handleSubmit}
         className="rounded-lg flex flex-col gap-2 items-center bg-secondary py-6 space-y-2 mx-auto lg:w-2/3 text-white"
       >
-        <h2 className="text-center text-2xl lg:text-4xl text-accent_1 my-6">
-          Please Register
+        <h2 className="text-center text-2xl font-semibold lg:text-2xl text-accent_1 my-6">
+          Please Register!
         </h2>
         <div className=" w-3/4 lg:w-2/4 space-y-2">
           Name
