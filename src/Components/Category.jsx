@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import useAllBooks from "../Hooks/useAllBooks";
 import Loading from "./Loading";
 import Book from "./Book";
+import PageTitle from "./PageTitle";
 
 const Category = () => {
   const { category } = useParams();
@@ -25,6 +26,7 @@ const Category = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
+      <PageTitle title={"Category"}></PageTitle>
       <div className="mx-auto bg-white shadow-lg rounded-lg p-6">
         <h1 className="text-3xl text-center font-bold text-primary mb-4 capitalize">
           {category} Books

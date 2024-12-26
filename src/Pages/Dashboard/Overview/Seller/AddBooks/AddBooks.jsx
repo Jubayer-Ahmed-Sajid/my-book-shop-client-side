@@ -3,6 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 import UseAuth from "../../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
+import PageTitle from "../../../../../Components/PageTitle";
 const AddBooks = () => {
     const {user }= UseAuth()
     const axiosSecure=useAxiosSecure();
@@ -45,6 +46,7 @@ const AddBooks = () => {
         className="rounded-lg mt-12 flex flex-col p-8 gap-2 items-center bg-black space-y-2 mx-auto w-full text-white"
       >
         <div className="lg:grid grid-cols-3 w-full gap-2">
+          <PageTitle title={"Add Book"}></PageTitle>
           <div className=" w-3/4 lg:w-full space-y-2">
             <label className="" htmlFor="title">
               Book's name

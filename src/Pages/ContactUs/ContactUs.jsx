@@ -3,6 +3,7 @@ import { FaEnvelopeOpenText, FaXTwitter } from "react-icons/fa6";
 import { TiSocialFacebookCircular } from "react-icons/ti";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
+import PageTitle from "../../Components/PageTitle";
 
 const ContactUs = () => {
   const form = useRef();
@@ -30,6 +31,7 @@ const ContactUs = () => {
 
   return (
     <div className="my-20 container mx-auto">
+      <PageTitle title={"Contact"}></PageTitle>
       <div className="bg-accent_2 mx-6 shadow-lg p-6 rounded-lg">
         <h2 className="text-center text-3xl font-bold my-6 text-primary">
           Contact us{" "}

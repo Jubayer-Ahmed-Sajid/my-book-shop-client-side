@@ -7,6 +7,7 @@ import BasicTable from "../../../../../Components/BasicTable";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
+import PageTitle from "../../../../../Components/PageTitle";
 
 const MyBooks = () => {
   const { user } = UseAuth();
@@ -88,6 +89,7 @@ const MyBooks = () => {
   };
   return (
     <div>
+      <PageTitle title={"My Books"}></PageTitle>
       <BasicTable data={data?.data} columns={columns} />
     </div>
   );

@@ -7,10 +7,13 @@ import FAQ from "./Home/FAQ";
 import ContactInfo from "./Home/ContactInfo";
 import Testimonials from "./Home/Testimonials";
 import Categories from "./Home/Categories";
+import { Helmet } from "react-helmet-async";
+import PageTitle from "../../Components/PageTitle";
 
 const Home = () => {
   return (
     <div>
+      <PageTitle title={"Home"}></PageTitle>
       <Banner></Banner>
       <div className="container mx-auto">
         <Categories></Categories>

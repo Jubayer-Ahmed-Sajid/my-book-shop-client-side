@@ -1,8 +1,10 @@
 import React from "react";
+import PageTitle from "../../Components/PageTitle";
 
 const AboutUs = () => {
   return (
     <div className="bg-gray-100 container mx-auto p-6">
+      <PageTitle title={"About"}></PageTitle>
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="lg:flex">
           <div className="lg:w-1/2 w-full">

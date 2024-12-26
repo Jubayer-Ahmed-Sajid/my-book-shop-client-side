@@ -17,7 +17,10 @@ const Wishlist = () => {
 
   return (
     <div>
+            <PageTitle title={"Wishlist"}></PageTitle>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-8 p-4">
+
         {wishlists.length === 0 ? (
           <div className="text-center text-accent_2 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
             No items in wishlist

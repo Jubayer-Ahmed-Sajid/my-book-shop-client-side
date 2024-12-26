@@ -7,6 +7,8 @@ import axios from "axios";
 import Book from "../../Components/Book";
 import { Link } from "react-router-dom";
 import Loading from "../../Components/Loading";
+import { Helmet } from "react-helmet-async";
+import PageTitle from "../../Components/PageTitle";
 
 const Books = () => {
   const [search, setSearch] = useState("");
@@ -45,6 +47,7 @@ const Books = () => {
 
   return (
     <div>
+     <PageTitle title={"Books"}></PageTitle>
       <div className="lg:flex justify-between mx-2">
         <SearchBar setSearch={setSearch}></SearchBar>
         <SortBar setSorts={setSorts}></SortBar>

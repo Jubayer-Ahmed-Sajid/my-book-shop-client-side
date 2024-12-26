@@ -3,6 +3,7 @@ import Loading from "../../../../Components/Loading";
 import useUserDetails from "../../../../Hooks/useUserDetails";
 import UseAuth from "../../../../Hooks/UseAuth";
 import CartCard from "../../../../Components/CartCard";
+import PageTitle from "../../../../Components/PageTitle";
 
 const Cart = () => {
   const { user, loading } = UseAuth();
@@ -18,6 +19,8 @@ const Cart = () => {
 
   return (
     <div className="md:grid grid-cols-3 gap-x-5 gap-y-8 p-4">
+            <PageTitle title={"Cart"}></PageTitle>
+
       {
         cart?.length === 0 ? <div className='text-center text-accent_2 lg:text-2xl font-bold w-screen h-screen flex items-center justify-center'>No items in cart</div> :(
           cart?.map((cartItem) => {

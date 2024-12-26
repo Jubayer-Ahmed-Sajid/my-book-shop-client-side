@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import PageTitle from "../../Components/PageTitle";
 
 const Login = () => {
   const { login, googleSignin } = UseAuth();
@@ -78,6 +79,7 @@ const Login = () => {
 
   return (
     <div className=" w-full my-8 mx-12">
+      <PageTitle title={"Login"}></PageTitle>
       <form
         onSubmit={formik.handleSubmit}
         className="rounded-lg mt-12 flex flex-col gap-2 items-center bg-black py-6 space-y-2 mx-auto lg:w-2/3 text-white"

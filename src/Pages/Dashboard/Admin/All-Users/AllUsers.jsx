@@ -5,6 +5,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Components/Loading";
 import Swal from 'sweetalert2'
+import PageTitle from "../../../../Components/PageTitle";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -152,6 +153,8 @@ const AllUsers = () => {
       accessorKey: "status",
       cell: ({ row }) => (
         <div>
+                <PageTitle title={"All Users"}></PageTitle>
+
           {row.original.status === "approved" && <p> {row.original.status}</p>}
           {row.original.status === "pending" && (
             <button onClick={() => handleApproveUser(row.original)}>

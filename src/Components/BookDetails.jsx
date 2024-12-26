@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "./Loading";
 import useUserDetails from "../Hooks/useUserDetails";
+import PageTitle from "./PageTitle";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -65,6 +66,7 @@ const BookDetails = () => {
 
   return (
     <div className="w-full p-8">
+      <PageTitle title={"Book Details"}></PageTitle>
       <p className="text-xl font-bold">{title}</p> by
       <span className="text-xl font-semibold text-blue-400 mb"> {author}</span>
       <div className="divider divider-accent"></div>

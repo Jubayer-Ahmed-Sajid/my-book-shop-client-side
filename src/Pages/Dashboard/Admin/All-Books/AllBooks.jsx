@@ -6,6 +6,7 @@ import Loading from "../../../../Components/Loading";
 import BasicTable from "../../../../Components/BasicTable";
 import useAdminBooks from "../../../../Hooks/useAdminBooks";
 import Swal from "sweetalert2";
+import PageTitle from "../../../../Components/PageTitle";
 
 const AllBooks = () => {
   const { data, isLoading, isError, refetch } = useAdminBooks();
@@ -106,6 +107,8 @@ const AllBooks = () => {
 };
   return (
     <div>
+            <PageTitle title={"All Books"}></PageTitle>
+
       <BasicTable data={data?.data} columns={columns} />
     </div>
   );

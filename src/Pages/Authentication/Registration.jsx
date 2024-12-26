@@ -8,6 +8,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import UseAuth from "../../Hooks/UseAuth";
 import { toast } from "sonner";
 import { FcGoogle } from "react-icons/fc";
+import PageTitle from "../../Components/PageTitle";
 
 // image hosting key and api
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -134,6 +135,7 @@ const Registration = () => {
 
   return (
     <div className=" w-full my-8 mx-12">
+      <PageTitle title={"Registration"}></PageTitle>
 
       <form
         onSubmit={formik.handleSubmit}

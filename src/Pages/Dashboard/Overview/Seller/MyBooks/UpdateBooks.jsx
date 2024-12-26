@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import * as Yup from "yup";
 import UseAuth from "../../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
+import PageTitle from "../../../../../Components/PageTitle";
 
 const UpdateBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -54,6 +55,8 @@ const UpdateBooks = () => {
 
   return (
     <div className=" w-full my-8">
+            <PageTitle title={"Update Books"}></PageTitle>
+
       <h2 className="text-center text-2xl lg:text-4xl">Update Book</h2>
       <form
         onSubmit={formik.handleSubmit}
