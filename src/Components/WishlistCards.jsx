@@ -1,7 +1,6 @@
 import React from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import useBookDetails from "../Hooks/useBookDetails";
-import Loading from "./Loading";
 import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";

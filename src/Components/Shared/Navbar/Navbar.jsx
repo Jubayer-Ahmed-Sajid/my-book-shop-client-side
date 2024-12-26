@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
 import UseAuth from "../../../Hooks/UseAuth";
 import Loading from "../../Loading";
@@ -65,12 +65,11 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a
-          href="/"
-          className="btn hidden lg:block btn-ghost text-2xl text-primary font-bold"
+        <Link to='/'
+          className="hidden lg:block text-2xl text-primary font-bold"
         >
           Books Corner
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu text-xl menu-horizontal px-1">{navLinks}</ul>

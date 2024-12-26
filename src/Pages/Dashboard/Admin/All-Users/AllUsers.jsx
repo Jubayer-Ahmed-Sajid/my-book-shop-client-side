@@ -213,7 +213,7 @@ const AllUsers = () => {
               Approve
             </button>
           )}
-          {row.original.role ==="seller" && <p>Approved</p> }
+          {row.original.role ==="seller" && row.original.status==='approved' && <p>Approved</p> }
         </div>
       ),
     },

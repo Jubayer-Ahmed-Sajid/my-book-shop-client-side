@@ -5,8 +5,17 @@ import UseAuth from "../../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import PageTitle from "../../../../../Components/PageTitle";
 import { toast } from "sonner";
+import useUserDetails from "../../../../../Hooks/useUserDetails";
+import Loading from "../../../../../Components/Loading";
 const AddBooks = () => {
   const { user } = UseAuth();
+  const {data,isLoading} = useUserDetails();
+
+  if(isLoading){
+    return <Loading></Loading>
+  }
+  const status = data?.data?.status;
+  console.log(status);
   const axiosSecure = useAxiosSecure();
   const email = user?.email;
   console.log(email);
@@ -46,11 +55,15 @@ const AddBooks = () => {
         description,
         email,
       };
-      console.log(bookInfo);
-      const res = await axiosSecure.post("/books", bookInfo);
-      console.log(res?.data);
-      toast.success("Book successfully added!")
-      resetForm()
+     if(status != 'approved'){
+      toast.error("You need to be approved as seller");
+     }
+     else{
+
+       await axiosSecure.post("/books", bookInfo)
+       toast.success("Book successfully added!")
+       resetForm()
+     }
       }
       catch (error) {
         toast.error(`${error?.message || error}`);
