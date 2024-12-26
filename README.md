@@ -44,7 +44,7 @@ Check out the live application [here](https://book-shop-jp-project.vercel.app).
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/jubayer-ahmed-sajid/my-book-shop.git](https://github.com/Jubayer-Ahmed-Sajid/my-book-shop-client-side)
+   git clone https://github.com/Jubayer-Ahmed-Sajid/my-book-shop-client-side
    ```
 2. Navigate to the project directory::
    ```bash
