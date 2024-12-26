@@ -86,7 +86,7 @@ const Login = () => {
         onSubmit={formik.handleSubmit}
         className="rounded-lg flex flex-col gap-2 items-center bg-secondary py-6 space-y-2 mx-auto lg:w-2/3 text-white"
       >
-        <h2 className="text-center text-2xl lg:text-2xl text-accent_1 font-semibold my-6">
+        <h2 className="text-center text-2xl lg:text-2xl text-accent_1 font-semibold mb-6">
           Please Login!
         </h2>
     

@@ -70,11 +70,11 @@ const routes = createBrowserRouter([
         element: <Overview></Overview>,
       },
       {
-        path: "/dashboard/add-books",
+        path: "/dashboard/add-book",
         element:<SellerRoute><AddBooks></AddBooks></SellerRoute> ,
       },
       {
-        path:'/dashboard/my-books',
+        path:'/dashboard/my-book',
         element:<SellerRoute><MyBooks></MyBooks> </SellerRoute> 
       },
       {
