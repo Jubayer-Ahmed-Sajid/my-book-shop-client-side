@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import useUserDetails from "../../../Hooks/useUserDetails";
 import UseAuth from "../../../Hooks/UseAuth";
 import { MdLogout, MdOutlineDashboardCustomize } from "react-icons/md";
+import Loading from "../../Loading";
 
 const DropDown = () => {
-  const {data} = useUserDetails()
+  const {data,isLoading} = useUserDetails()
+  if(isLoading){
+    return <Loading></Loading>
+  }
+ 
   const {logout} = UseAuth()
 
   return (
@@ -13,7 +18,8 @@ const DropDown = () => {
       <div tabIndex={0} role="button"  className=" m-1">
         <div className="avatar">
           <div className=" w-12 rounded-full">
-            <img src={data?.data?.photoURL} />
+            <img src={data?.data?.photoURL
+} />
           </div>
         </div>
       </div>

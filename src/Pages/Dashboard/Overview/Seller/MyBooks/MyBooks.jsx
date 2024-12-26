@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import PageTitle from "../../../../../Components/PageTitle";
+import Swal from "sweetalert2";
+import { toast } from "sonner";
 
 const MyBooks = () => {
   const { user } = UseAuth();
@@ -80,9 +82,22 @@ const MyBooks = () => {
 
   const handleDelete = async (book) => {
     try {
-      const res = await axiosSecure.delete(`/book/delete/${book._id}`);
-      console.log(res.data);
-      refetch();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axiosSecure.delete(`/book/delete/${book._id}`);
+          toast.success("Books successfully deleted");
+          refetch();
+        }
+      });
+     
     } catch (error) {
       console.error("Error deleting book:", error);
     }

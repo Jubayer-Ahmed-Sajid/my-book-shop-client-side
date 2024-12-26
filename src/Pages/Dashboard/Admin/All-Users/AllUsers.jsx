@@ -6,11 +6,25 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Components/Loading";
 import Swal from 'sweetalert2'
 import PageTitle from "../../../../Components/PageTitle";
+import { toast } from "sonner";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const { data, isLoading, isError, refetch } = UseAllUsers();
-  console.log(data);
+
+
+  if (isLoading) {
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div>Error loading users</div>;
+  }
+
 
   // Function to handle deleting a user
   const handleDelete = async (user) => {
@@ -55,7 +69,7 @@ const AllUsers = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, Make admin!"
       }).then(async(result) => {
         if (result.isConfirmed) {
           const res = await axiosSecure.patch(`/user/update/${user.email}`, {
@@ -111,13 +125,51 @@ const AllUsers = () => {
       });
      
     } catch (error) {
-      swal.fire({
+      Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Something went wrong!",
       });
     }
   };
+
+  // Function to Promote Buyer to seller
+
+  const handlePromote = async (user) => {
+    try {
+      Swal.fire({
+        title: "Do you want to promote to seller?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Promote!"
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+
+          const res = await axiosSecure.patch(`/users/promote-to-seller/${user?.email}`, {
+            role: "seller",
+          });
+          console.log(res.data);
+          refetch();
+          Swal.fire({
+            title: "Promoted to Seller!",
+            text: "User is now a seller",
+            icon: "success"
+          });
+        }
+      })
+      
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+    }
+  };
+
 
   // Define columns for the user table
   const columns = [
@@ -155,12 +207,13 @@ const AllUsers = () => {
         <div>
                 <PageTitle title={"All Users"}></PageTitle>
 
-          {row.original.status === "approved" && <p> {row.original.status}</p>}
+          {row.original.role === "buyer" && <button onClick={()=>handlePromote(row.original)} className="btn bg-accent_1 text-white">Promote to Seller</button>}
           {row.original.status === "pending" && (
-            <button onClick={() => handleApproveUser(row.original)}>
+            <button className="btn" onClick={() => handleApproveUser(row.original)}>
               Approve
             </button>
           )}
+          {row.original.role ==="seller" && <p>Approved</p> }
         </div>
       ),
     },
@@ -175,17 +228,7 @@ const AllUsers = () => {
     },
   ];
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loading></Loading>
-      </div>
-    );
-  }
-
-  if (isError) {
-    return <div>Error loading users</div>;
-  }
+  
 
   return (
     <div>

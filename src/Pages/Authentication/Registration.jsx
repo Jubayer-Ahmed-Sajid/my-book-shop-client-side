@@ -140,6 +140,7 @@ const Registration = () => {
 
       toast.dismiss();
       toast.success("User successfully created!!");
+      navigate(location?.state ? location?.state : "/");
     } catch (error) {
       toast.dismiss();
       toast.error(`${error.message}`);

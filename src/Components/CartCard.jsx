@@ -9,16 +9,14 @@ import Swal from "sweetalert2";
 
 const CartCard = ({ id, refetch }) => {
   const { user, loading } = UseAuth();
-  if (loading) {
-    return <Loading></Loading>;
-  }
+  
   const email = user?.email;
   const { data, isLoading, isError } = useBookDetails({ id: id });
   const axiosSecure = useAxiosSecure();
-  if (isLoading) {
-    return <Loading></Loading>;
+  let book = {};
+  if (!isLoading) {
+    book = data?.data;
   }
-  const book = data?.data;
   const { title, image, author, price, category, stock, description } = book;
 
   const handleRemoveItem = async () => {

@@ -50,9 +50,9 @@ const BasicTable = ({ data, columns }) => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="border p-2">
+            <tr key={row.id} className="border text-center p-2">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="border p-2">
+                <td key={cell.id} className="border text-center p-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

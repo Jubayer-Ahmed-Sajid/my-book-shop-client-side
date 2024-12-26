@@ -8,9 +8,11 @@ import { FcGoogle } from "react-icons/fc";
 import PageTitle from "../../Components/PageTitle";
 import { IoKeyOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
   const { login, googleSignin } = UseAuth();
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -58,12 +60,34 @@ const Login = () => {
     },
   });
 
-  const handleGoogleSignin = async () => {
+  
+ const handleGoogleSignin = async () => {
     const res = await googleSignin();
     try {
+      const name = res?.user?.displayName;
+      const email = res?.user.email;
+      const photoURL = res?.user?.photoURL;
+      const role = "buyer";
+      const status = "approved";
+      const isAdmin = false;
+      const cart = [];
+      const wishlist = [];
+
+      const userInfo = {
+        name,
+        email,
+        photoURL,
+        role,
+        status,
+        isAdmin,
+        cart,
+        wishlist,
+      };
       const minDelay = 1000;
       const startTime = Date.now();
-      toast.loading("Logging in...");
+      toast.loading("User is creating...");
+
+      await axiosPublic.post("/users", userInfo);
 
       const passed = Date.now() - startTime;
       if (passed < minDelay) {
@@ -71,14 +95,13 @@ const Login = () => {
       }
 
       toast.dismiss();
-      toast.success("User successfully logged in!!");
+      toast.success("User successfully created!!");
       navigate(location?.state ? location?.state : "/");
     } catch (error) {
       toast.dismiss();
       toast.error(`${error.message}`);
     }
   };
-
   return (
     <div className=" mx-auto mt-4 mb-8 lg:mx-12">
       <PageTitle title={"Login"}></PageTitle>
