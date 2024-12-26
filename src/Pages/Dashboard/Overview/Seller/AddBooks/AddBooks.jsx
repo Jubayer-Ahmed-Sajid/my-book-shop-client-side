@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import UseAuth from "../../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import PageTitle from "../../../../../Components/PageTitle";
+import { toast } from "sonner";
 const AddBooks = () => {
   const { user } = UseAuth();
   const axiosSecure = useAxiosSecure();
@@ -30,8 +31,10 @@ const AddBooks = () => {
       category: Yup.string().required("Category is required"),
       description: Yup.string().required("Description is required"),
     }),
-    onSubmit: async (values) => {
-      const { title, author, image, price, stock, category, description } =
+    onSubmit: async (values,{ resetForm }) => {
+
+      try{
+        const { title, author, image, price, stock, category, description } =
         values;
       const bookInfo = {
         title,
@@ -45,13 +48,20 @@ const AddBooks = () => {
       };
       console.log(bookInfo);
       const res = await axiosSecure.post("/books", bookInfo);
-      console.log(res.data);
+      console.log(res?.data);
+      toast.success("Book successfully added!")
+      resetForm()
+      }
+      catch (error) {
+        toast.error(`${error?.message || error}`);
+      }
+     
     },
   });
   return (
     <div className=" w-full mt-4 mb-8">
       <PageTitle title={"Add Book"}></PageTitle>
-      <h2 className="text-center text-2xl lg:text-4xl">Add Books</h2>
+      <h2 className="text-center text-2xl lg:text-4xl">Update Book</h2>
       <form
         onSubmit={formik.handleSubmit}
         className="rounded-lg mt-12 flex flex-col p-8 gap-2 items-center bg-secondary space-y-2 mx-auto w-full text-white"

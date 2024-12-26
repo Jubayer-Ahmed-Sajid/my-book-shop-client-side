@@ -74,7 +74,7 @@ const routes = createBrowserRouter([
         element:<SellerRoute><AddBooks></AddBooks></SellerRoute> ,
       },
       {
-        path:'/dashboard/my-book',
+        path:'/dashboard/my-books',
         element:<SellerRoute><MyBooks></MyBooks> </SellerRoute> 
       },
       {

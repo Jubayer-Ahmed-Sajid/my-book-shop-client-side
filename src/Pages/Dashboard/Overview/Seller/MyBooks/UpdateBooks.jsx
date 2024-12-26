@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import UseAuth from "../../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import PageTitle from "../../../../../Components/PageTitle";
+import { toast } from "sonner";
 
 const UpdateBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -35,39 +36,46 @@ const UpdateBooks = () => {
       description: Yup.string().required("Description is required"),
     }),
     onSubmit: async (values) => {
-      const { title, author, image, price, stock, category, description } =
-        values;
-      const bookInfo = {
-        title,
-        author,
-        image,
-        price,
-        stock,
-        category,
-        description,
-        email,
-      };
-      console.log(bookInfo);
-      const res = await axiosSecure.patch(`/book/update/${book._id}`, bookInfo);
-      console.log(res?.data);
+      try {
+        const { title, author, image, price, stock, category, description } =
+          values;
+        const bookInfo = {
+          title,
+          author,
+          image,
+          price,
+          stock,
+          category,
+          description,
+          email,
+        };
+        console.log(bookInfo);
+        const res = await axiosSecure.patch(
+          `/book/update/${book._id}`,
+          bookInfo
+        );
+        console.log(res?.data);
+        toast.success("Book Successfully updated");
+      } catch (error) {
+        toast.error(`{${error.message}}`);
+      }
     },
   });
 
   return (
-    <div className=" w-full my-8">
-            <PageTitle title={"Update Books"}></PageTitle>
-
-      <h2 className="text-center text-2xl lg:text-4xl">Update Book</h2>
+    <div className=" w-full mt-4 mb-8">
+      <PageTitle title={"Add Book"}></PageTitle>
+      <h2 className="text-center text-2xl lg:text-4xl">Add Books</h2>
       <form
         onSubmit={formik.handleSubmit}
-        className="rounded-lg mt-12 flex flex-col p-8 gap-2 items-center bg-black space-y-2 mx-auto w-full text-white"
+        className="rounded-lg mt-12 flex flex-col p-8 gap-2 items-center bg-secondary space-y-2 mx-auto w-full text-white"
       >
-        <div className="lg:grid grid-cols-3 w-full gap-2">
-          <div className=" w-3/4 lg:w-full space-y-2">
+        <div className="lg:grid grid-cols-3 space-y-4 lg:space-y-0 w-full gap-2">
+          <div className=" w-3/4 lg:w-full mx-auto space-y-2">
             <label className="" htmlFor="title">
               Book's name
             </label>
-            <br />
+
             <input
               id="title"
               name="title"
@@ -86,7 +94,6 @@ const UpdateBooks = () => {
 
           <div className="w-3/4 lg:w-full mx-auto space-y-2">
             <label htmlFor="author"> Author name </label>
-            <br />
 
             <input
               id="author"
@@ -105,7 +112,6 @@ const UpdateBooks = () => {
 
           <div className="w-3/4 lg:w-full mx-auto space-y-2">
             <label>Image</label>
-            <br />
 
             <input
               id="image"
@@ -122,10 +128,10 @@ const UpdateBooks = () => {
           </div>
         </div>
 
-        <div className="lg:grid w-full grid-cols-2 gap-2">
-          <div className="space-y-2 w-3/4 lg:w-full">
+        <div className="lg:grid w-full grid-cols-2 space-y-4 lg:space-y-0 gap-2">
+          <div className="space-y-2 mx-auto w-3/4 lg:w-full">
             <label htmlFor="price">price</label>
-            <br />
+
             <input
               id="price"
               name="price"
@@ -134,16 +140,16 @@ const UpdateBooks = () => {
               onBlur={formik.handleBlur}
               value={formik.values.price}
               className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-              placeholder="price"
+              placeholder="Price"
             />
             {formik.touched.price && formik.errors.price ? (
               <p className="text-red-400 text-md">{formik.errors.price}</p>
             ) : null}
           </div>
 
-          <div className="space-y-2 w-3/4 lg:w-full">
+          <div className="space-y-2 mx-auto w-3/4 lg:w-full">
             <label>Stock</label>
-            <br />
+
             <input
               id="stock"
               name="stock"
@@ -152,7 +158,7 @@ const UpdateBooks = () => {
               onBlur={formik.handleBlur}
               value={formik.values.stock}
               className="w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 text-sm  text-blue-secondary outline outline-0 transition-all  focus:border-pink-base-300  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-              placeholder="stock"
+              placeholder="Stock"
             />
             {formik.touched.stock && formik.errors.stock ? (
               <p className="text-red-400 text-md">{formik.errors.stock}</p>
@@ -162,7 +168,7 @@ const UpdateBooks = () => {
 
         <div className="space-y-2 mx-auto w-3/4 lg:w-full">
           <label>Category</label>
-          <br />
+
           <select
             className="select text-black select-bordered w-full"
             id="category"
@@ -194,11 +200,11 @@ const UpdateBooks = () => {
         <div className="space-y-2 mx-auto w-3/4 lg:w-full">
           <label htmlFor="description">Description</label>
           <br />
-          <input
+          <textarea
             type="text"
             id="description"
             name="description"
-            placeholder="Type here"
+            placeholder="Enter Description"
             className="input input-bordered input-lg text-black w-full max-w-screen h-40"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -212,7 +218,7 @@ const UpdateBooks = () => {
         <br />
         <div className="w-3/4 flex items-center justify-center lg:w-full">
           <button
-            className="w-3/4 btn py-3 rounded-lg  px-3 bg-primary text-white"
+            className="w-full lg:w-3/5 btn py-3 rounded-lg  px-3 bg-accent_1 border-none text-white"
             type="submit"
           >
             Update Book
