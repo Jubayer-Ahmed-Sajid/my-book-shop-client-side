@@ -27,7 +27,7 @@ const CartCard = ({ id, refetch }) => {
       });
       refetch();
       toast.success("Product removed from cart");
-      console.log(res?.data);
+      // console.log(res?.data);
     } catch (error) {
       toast.error(`${error}`);
     }

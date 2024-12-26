@@ -40,7 +40,7 @@ const AllUsers = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const res = await axiosSecure.delete(`/user/delete/${user.email}`);
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
 
           Swal.fire({
@@ -75,7 +75,7 @@ const AllUsers = () => {
           const res = await axiosSecure.patch(`/user/update/${user.email}`, {
             isAdmin: true,
           });
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
           Swal.fire({
             title: "Status Changed!",
@@ -114,7 +114,7 @@ const AllUsers = () => {
           const res = await axiosSecure.patch(`/seller/approve/${user.email}`, {
             status: "approved",
           });
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
           Swal.fire({
             title: "Approved!",
@@ -151,7 +151,7 @@ const AllUsers = () => {
           const res = await axiosSecure.patch(`/users/promote-to-seller/${user?.email}`, {
             role: "seller",
           });
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
           Swal.fire({
             title: "Promoted to Seller!",

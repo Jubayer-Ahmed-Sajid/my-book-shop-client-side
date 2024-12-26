@@ -38,13 +38,13 @@ const WishlistCards = ({ id, refetch }) => {
       });
       refetch();
       toast.success("Product removed from wishlist");
-      console.log(res?.data);
+      // console.log(res?.data);
     } catch (error) {
       toast.error(`${error}`);
     }
   };
 
-  console.log(book);
+  // console.log(book);
   return (
     <div className="bg-white flex flex-col justify-between shadow-lg lg:h-[430px] rounded-lg overflow-hidden transform transition-transform hover:scale-105 duration-300">
       <img src={image} className="h-40 object-cover w-full" alt="" />

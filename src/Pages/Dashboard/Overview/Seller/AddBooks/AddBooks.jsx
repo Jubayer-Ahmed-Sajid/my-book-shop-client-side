@@ -15,10 +15,10 @@ const AddBooks = () => {
     return <Loading></Loading>
   }
   const status = data?.data?.status;
-  console.log(status);
+  // console.log(status);
   const axiosSecure = useAxiosSecure();
   const email = user?.email;
-  console.log(email);
+  // console.log(email);
   const formik = useFormik({
     initialValues: {
       title: "",

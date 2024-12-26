@@ -73,7 +73,7 @@ const Registration = () => {
       // User creation with email and password
       try {
         const createdUser = await createUser(email, password);
-        console.log(createdUser);
+        // console.log(createdUser);
         const isAdmin = false;
         const userInfo = {
           name,
@@ -86,7 +86,7 @@ const Registration = () => {
           wishlist,
         };
         await axiosPublic.post("/users", userInfo).then((res) => {
-          console.log(res?.data);
+          // console.log(res?.data);
         });
         const passed = Date.now() - startTime;
         if (passed < minDelay) {

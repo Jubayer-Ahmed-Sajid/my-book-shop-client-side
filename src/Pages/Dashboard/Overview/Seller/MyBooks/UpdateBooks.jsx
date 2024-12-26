@@ -49,12 +49,12 @@ const UpdateBooks = () => {
           description,
           email,
         };
-        console.log(bookInfo);
+        // console.log(bookInfo);
         const res = await axiosSecure.patch(
           `/book/update/${book._id}`,
           bookInfo
         );
-        console.log(res?.data);
+        // console.log(res?.data);
         toast.success("Book Successfully updated");
       } catch (error) {
         toast.error(`{${error.message}}`);

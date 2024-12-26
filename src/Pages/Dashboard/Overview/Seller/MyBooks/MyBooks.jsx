@@ -15,7 +15,7 @@ const MyBooks = () => {
   const { user } = UseAuth();
   const email = user?.email;
   const { data, isLoading, isError, refetch } = useSellerBooks({ email });
-  console.log(data);
+  // console.log(data);
   const axiosSecure = useAxiosSecure();
   if (isLoading) {
     return (

@@ -20,7 +20,7 @@ const DropDownMenu = () => {
 
   const role = data?.data?.role;
   const isAdmin = data?.data?.isAdmin;
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   let options = [
     { name: "Home", path: "/", icon: <IoHomeOutline /> },
