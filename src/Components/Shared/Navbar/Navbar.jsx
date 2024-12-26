@@ -28,12 +28,12 @@ const Navbar = () => {
     </>
   );
   const navEnd = (
-    <div>
-      <NavLink className="btn px-[26px] btn-md btn-primary" to="/login">
+    <div className="w-full flex gap-2">
+      <NavLink  className="btn w-1/2  text-white border-none bg-accent_1" to="/login">
         Login
       </NavLink>
 
-      <NavLink className="btn btn-md btn-primary" to="/registration">
+      <NavLink  className="btn w-1/2  text-white border-none bg-accent_1" to="/registration">
         Register
       </NavLink>
     </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
         {user ? (
           <DropDown></DropDown>
         ) : (
-          <div className="flex gap-2">{navEnd}</div>
+          <div>{navEnd}</div>
         )}
       </div>
     </div>
