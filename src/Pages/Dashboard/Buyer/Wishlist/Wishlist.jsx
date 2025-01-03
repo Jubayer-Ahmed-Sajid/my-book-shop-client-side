@@ -19,7 +19,7 @@ const Wishlist = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-8 p-4">
 
         {!isLoading && wishlists.length === 0 ? (
-          <div className="text-center text-error lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
+           <div className="text-error mx-auto col-span-3 lg:text-3xl font-bold h-screen items-center flex ">
             No items in wishlist
           </div>
         ) : (

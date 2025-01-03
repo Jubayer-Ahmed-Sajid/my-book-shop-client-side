@@ -65,14 +65,14 @@ const WishlistCards = ({ id, refetch }) => {
       <div className="grid lg:grid-cols-2 mx-2 my-3 gap-2">
         <button
           onClick={handleAddToCart}
-          className="flex justify-center text-white bg-accent hover:bg-green-600 btn items-center gap-3"
+          className="flex justify-center text-white bg-accent hover:bg-accent/80 btn items-center gap-3"
         >
           <FaCartShopping className="text-2xl"></FaCartShopping>Add to Cart
         </button>
 
         <button
           onClick={handleRemoveItem}
-          className="flex justify-center text-white hover:bg-red-600 btn bg-error border-none  items-center gap-3"
+          className="flex justify-center text-white hover:bg-error/80 btn bg-error border-none  items-center gap-3"
         >
           Remove Item
         </button>

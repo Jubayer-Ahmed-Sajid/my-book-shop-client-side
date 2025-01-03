@@ -29,11 +29,11 @@ const Navbar = () => {
   );
   const navEnd = (
     <div className="w-full flex gap-2">
-      <NavLink  className="btn w-1/2  text-white border-none bg-accent" to="/login">
+      <NavLink  className="btn w-1/2 hover:bg-accent/80 text-white border-none bg-accent" to="/login">
         Login
       </NavLink>
 
-      <NavLink  className="btn w-1/2  text-white border-none bg-accent" to="/registration">
+      <NavLink  className="btn w-1/2 hover:bg-accent/80 text-white border-none bg-accent" to="/registration">
         Register
       </NavLink>
     </div>

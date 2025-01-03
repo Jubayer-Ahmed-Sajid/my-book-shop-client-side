@@ -28,12 +28,12 @@ const DropDown = () => {
         className="dropdown-content menu bg-white rounded-box z-[1] w-52 p-2 shadow"
       >
         <li>
-         <Link className="btn flex items-center border-none hover:bg-green-600 gap-3 bg-accent text-white" to="/dashboard/overview">
+         <Link className="btn flex items-center border-none hover:bg-accent/80 gap-3 bg-accent text-white" to="/dashboard/overview">
          <MdOutlineDashboardCustomize className="text-2xl" />
          Dashboard</Link>
         </li>
         <li>
-         <button onClick={()=> logout()} className="bg-error flex items-center gap-3 hover:bg-red-600 text-white border-none btn btn-md my-2">  <MdLogout className="text-2xl" />Logout</button>
+         <button onClick={()=> logout()} className="bg-error flex items-center gap-3 hover:bg-error/80 text-white border-none btn btn-md my-2">  <MdLogout className="text-2xl" />Logout</button>
         </li>
       </ul>
     </div>

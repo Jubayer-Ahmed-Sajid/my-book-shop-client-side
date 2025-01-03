@@ -269,7 +269,7 @@ const Registration = () => {
         <br />
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <button
-            className="w-full btn py-3 rounded-lg  px-3 bg-accent border-none text-white"
+            className="w-full hover:bg-accent/80 btn py-3 rounded-lg  px-3 bg-accent border-none text-white"
             type="submit"
           >
             Sign up
@@ -282,7 +282,7 @@ const Registration = () => {
           <button
             type="button"
             onClick={handleGoogleSignin}
-            className="btn gap-2 flex items-center mb-4 text-white rounded-lg text-center w-full bg-accent border-none py-3"
+            className="btn hover:bg-accent/80 gap-2 flex items-center mb-4 text-white rounded-lg text-center w-full bg-accent border-none py-3"
           >
             <FcGoogle className="text-2xl" />
             <h2 className="flex justify-center items-center gap-4">

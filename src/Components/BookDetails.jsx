@@ -83,14 +83,14 @@ const BookDetails = () => {
                 Stock: <span className="text-primary">{stock}</span>
               </p>
             </div>
-            <div className="lg:flex mt-4 space-y-2 justify-between">
+            <div className="lg:flex mt-4 lg:space-y-0 space-y-2 justify-between">
               <button
                 disabled={isFound || isAdmin || isSeller}
                 onClick={handleAddToCart}
                 className={`lg:w-1/3 border-none items-center justify-center flex gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
                   isFound || isAdmin || isSeller
                     ? "bg-gray-400 cursor-not-allowed text-gray-700"
-                    : "text-white   bg-accent hover-green-400"
+                    : "text-white bg-accent hover:bg-accent/80"
                 }`}
               >
                 <MdAddShoppingCart className="text-2xl" />
@@ -101,11 +101,11 @@ const BookDetails = () => {
                 className={`lg:w-1/3 border-none items-center justify-center flex gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
                   isFoundWishlist || isAdmin || isSeller
                     ? "bg-gray-400 cursor-not-allowed text-gray-700"
-                    : "text-white bg-error hover:bg-red-400 flex gap-2"
+                    : "text-white bg-error hover:bg-error/80"
                 }`}
                 onClick={handleWishlist}
               >
-                <FaRegHeart />
+                <FaRegHeart className="text-2xl" />
                 Add to wishlist
               </button>
             </div>

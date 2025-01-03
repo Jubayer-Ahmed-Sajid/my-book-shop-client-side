@@ -16,7 +16,7 @@ const Cart = () => {
       <PageTitle title={"Cart"}></PageTitle>
 
       {!isLoading && cart?.length === 0 ? (
-        <div className="text-center text-error lg:text-2xl font-bold w-screen h-screen flex items-center justify-center">
+        <div className="text-error mx-auto col-span-3 lg:text-3xl font-bold h-screen items-center flex ">
           No items in cart
         </div>
       ) : (

@@ -34,7 +34,7 @@ const Category = () => {
         <div className="divider w-1/3 mx-auto my-6 bg-accent h-1"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {books?.length === 0 ? (
-            <div className="flex h-screen w-screen items-center justify-center text-2xl text-primary">
+            <div className="flex h-screen lg:col-span-4 md:col-span-2 mx-auto items-center justify-center text-2xl text-primary">
               No books found
             </div>
           ) : (

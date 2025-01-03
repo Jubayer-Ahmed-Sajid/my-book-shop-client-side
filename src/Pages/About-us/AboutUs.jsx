@@ -102,7 +102,7 @@ const AboutUs = () => {
           social media, subscribe to our newsletter, and stay updated with the
           latest book releases and events.
         </p>
-        <button className="btn bg-primary text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+        <button className="btn bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/80 transition-colors">
           Subscribe Now
         </button>
       </div>

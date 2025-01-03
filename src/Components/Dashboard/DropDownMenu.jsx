@@ -80,7 +80,7 @@ const DropDownMenu = () => {
               <NavLink
                 key={option.name}
                 to={option.path}
-                className="flex items-center p-3 rounded-lg hover:bg-indigo-700 transition-colors"
+                className="flex items-center p-3 rounded-lg hover:bg-primary/80 transition-colors"
                 activeClassName="bg-indigo-700"
               >
                 <span className="text-2xl mr-3">{option.icon}</span>
@@ -90,7 +90,7 @@ const DropDownMenu = () => {
           </nav>
           <button
             onClick={logout}
-            className="flex items-center p-3 mt-6 rounded-lg bg-red-600 hover:bg-red-700 transition-colors w-full"
+            className="flex items-center p-3 mt-6 rounded-lg bg-red-600 hover:bg-error/80 transition-colors w-full"
           >
             <MdLogout className="text-2xl mr-3" />
             <span>Logout</span>
