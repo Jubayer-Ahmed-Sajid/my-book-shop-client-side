@@ -6,7 +6,7 @@ const FAQ = () => {
       <h2 className="text-center text-3xl font-bold mt-12 text-primary">
         Frequently Asked Questions
       </h2>
-      <div className="divider w-1/3 mx-auto my-6 bg-accent_1 h-1"></div>
+      <div className="divider w-1/3 mx-auto my-6 bg-accent h-1"></div>
       <div className="space-y-4">
         <div className="collapse collapse-plus bg-white shadow-lg rounded-lg">
           <input type="radio" name="my-accordion-3" defaultChecked />

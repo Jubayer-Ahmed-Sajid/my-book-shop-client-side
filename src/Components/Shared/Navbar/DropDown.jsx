@@ -8,7 +8,7 @@ import Loading from "../../Loading";
 const DropDown = () => {
   const {data,isLoading} = useUserDetails()
   if(isLoading){
-    return <Loading></Loading>
+    return <div className="12">Loading... </div>
   }
  
   const {logout} = UseAuth()
@@ -28,12 +28,12 @@ const DropDown = () => {
         className="dropdown-content menu bg-white rounded-box z-[1] w-52 p-2 shadow"
       >
         <li>
-         <Link className="btn flex items-center border-none hover:bg-green-600 gap-3 bg-accent_1 text-white" to="/dashboard/overview">
+         <Link className="btn flex items-center border-none hover:bg-green-600 gap-3 bg-accent text-white" to="/dashboard/overview">
          <MdOutlineDashboardCustomize className="text-2xl" />
          Dashboard</Link>
         </li>
         <li>
-         <button onClick={()=> logout()} className="bg-accent_2 flex items-center gap-3 hover:bg-red-600 text-white border-none btn btn-md my-2">  <MdLogout className="text-2xl" />Logout</button>
+         <button onClick={()=> logout()} className="bg-error flex items-center gap-3 hover:bg-red-600 text-white border-none btn btn-md my-2">  <MdLogout className="text-2xl" />Logout</button>
         </li>
       </ul>
     </div>

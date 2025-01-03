@@ -207,7 +207,7 @@ const AllUsers = () => {
         <div>
                 <PageTitle title={"All Users"}></PageTitle>
 
-          {row.original.role === "buyer" && <button onClick={()=>handlePromote(row.original)} className="btn bg-accent_1 text-white">Promote to Seller</button>}
+          {row.original.role === "buyer" && <button onClick={()=>handlePromote(row.original)} className="btn bg-accent text-white">Promote to Seller</button>}
           {row.original.status === "pending" && (
             <button className="btn" onClick={() => handleApproveUser(row.original)}>
               Approve

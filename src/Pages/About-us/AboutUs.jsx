@@ -63,7 +63,7 @@ const AboutUs = () => {
             <img
               src="https://i.ibb.co.com/MBsgq2P/82dcfe22-cd6f-42be-a379-3f7ba1d6a648.jpg"
               alt="Team Member"
-              className="rounded-full w-32 object-cover h-32 mb-4 border-4 border-accent_1"
+              className="rounded-full w-32 object-cover h-32 mb-4 border-4 border-accent"
             />
             <h3 className="text-xl font-semibold text-primary">
               Jobayer Ahmed
@@ -74,7 +74,7 @@ const AboutUs = () => {
             <img
               src="https://img.freepik.com/free-photo/man-portrait-posing-loft-modern-space_158595-5368.jpg?uid=R119823725&ga=GA1.1.1124564091.1734164686&semt=ais_hybrid"
               alt="Team Member"
-              className="rounded-full w-32 object-cover h-32 mb-4 border-4 border-accent_1"
+              className="rounded-full w-32 object-cover h-32 mb-4 border-4 border-accent"
             />
             <h3 className="text-xl font-semibold text-primary">Jane Smith</h3>
             <p className="text-md text-secondary">Chief Operating Officer</p>
@@ -83,7 +83,7 @@ const AboutUs = () => {
             <img
               src="https://img.freepik.com/free-photo/brunette-business-woman-with-wavy-long-hair-blue-eyes-stands-holding-notebook-hands_197531-343.jpg?uid=R119823725&ga=GA1.1.1124564091.1734164686&semt=ais_hybrid"
               alt="Team Member"
-              className="rounded-full object-cover w-32 h-32 mb-4 border-4 border-accent_1"
+              className="rounded-full object-cover w-32 h-32 mb-4 border-4 border-accent"
             />
             <h3 className="text-xl font-semibold text-primary">
               Emily Johnson
@@ -93,7 +93,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto shadow-lg rounded-lg overflow-hidden mt-8 p-6 text-center bg-accent_1 text-white">
+      <div className="max-w-6xl mx-auto shadow-lg rounded-lg overflow-hidden mt-8 p-6 text-center bg-accent text-white">
         <h2 className="lg:text-3xl text-xl font-bold mb-4">
           Join Our Community
         </h2>

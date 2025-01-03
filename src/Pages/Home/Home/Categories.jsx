@@ -12,7 +12,7 @@ const Categories = () => {
       <h2 className="text-center text-3xl font-bold mt-12 text-primary">
         Top Categories
       </h2>
-      <div className="divider w-1/3 mx-auto my-6 bg-accent_1 h-1"></div>
+      <div className="divider w-1/3 mx-auto my-6 bg-accent h-1"></div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto">
         <Link
           to='/categories/horror'

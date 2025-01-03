@@ -218,7 +218,7 @@ const UpdateBooks = () => {
         <br />
         <div className="w-3/4 flex items-center justify-center lg:w-full">
           <button
-            className="w-full lg:w-3/5 btn py-3 rounded-lg  px-3 bg-accent_1 border-none text-white"
+            className="w-full lg:w-3/5 btn py-3 rounded-lg  px-3 bg-accent border-none text-white"
             type="submit"
           >
             Update Book

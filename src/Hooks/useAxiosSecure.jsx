@@ -10,7 +10,8 @@ const useAxiosSecure = () => {
     const navigate =useNavigate()
   // Create an axios instance
   const axiosSecure = axios.create({
-    baseURL: "https://my-book-shop-backend.vercel.app",
+    // baseURL: "https://my-book-shop-backend.vercel.app",
+    baseURL: 'http://localhost:5000',
     withCredentials: true,
   });
 

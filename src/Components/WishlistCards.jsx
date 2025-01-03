@@ -54,10 +54,10 @@ const WishlistCards = ({ id, refetch }) => {
         <p className="text-md text-gray-500 mb-4">{category}</p>
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold text-primary">
-            Price:$ <span className="text-accent_1">{price}</span>
+            Price:$ <span className="text-accent">{price}</span>
           </p>
           <p className="text-lg font-semibold text-primary">
-            Stock: <span className="text-accent_2">{stock}</span>
+            Stock: <span className="text-error">{stock}</span>
           </p>
         </div>
       </div>
@@ -65,14 +65,14 @@ const WishlistCards = ({ id, refetch }) => {
       <div className="grid lg:grid-cols-2 mx-2 my-3 gap-2">
         <button
           onClick={handleAddToCart}
-          className="flex justify-center text-white bg-accent_1 hover:bg-green-600 btn items-center gap-3"
+          className="flex justify-center text-white bg-accent hover:bg-green-600 btn items-center gap-3"
         >
           <FaCartShopping className="text-2xl"></FaCartShopping>Add to Cart
         </button>
 
         <button
           onClick={handleRemoveItem}
-          className="flex justify-center text-white hover:bg-red-600 btn bg-accent_2 border-none  items-center gap-3"
+          className="flex justify-center text-white hover:bg-red-600 btn bg-error border-none  items-center gap-3"
         >
           Remove Item
         </button>

@@ -109,7 +109,7 @@ const Login = () => {
         onSubmit={formik.handleSubmit}
         className="rounded-lg flex flex-col gap-2 items-center bg-secondary py-6 space-y-2 mx-auto lg:w-2/3 text-white"
       >
-        <h2 className="text-center text-2xl lg:text-2xl text-accent_1 font-semibold mb-6">
+        <h2 className="text-center text-2xl lg:text-2xl text-accent font-semibold mb-6">
           Please Login!
         </h2>
     
@@ -164,7 +164,7 @@ const Login = () => {
 
         <div className="w-3/4 flex items-center justify-center lg:w-2/4">
           <button
-            className="w-full btn py-3 rounded-lg  px-3 border-none bg-accent_1 text-white"
+            className="w-full btn py-3 rounded-lg  px-3 border-none bg-accent text-white"
             type="submit"
           >
             Login
@@ -177,7 +177,7 @@ const Login = () => {
           <button
             type="button"
             onClick={handleGoogleSignin}
-            className="btn mb-4 flex gap-2 items-center text-white rounded-lg text-center w-full bg-accent_1 border-none py-3"
+            className="btn mb-4 flex gap-2 items-center text-white rounded-lg text-center w-full bg-accent border-none py-3"
           >
             <FcGoogle className="text-2xl"></FcGoogle>
             <h2 className="flex justify-center items-center gap-4">

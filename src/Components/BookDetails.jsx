@@ -12,20 +12,18 @@ import PageTitle from "./PageTitle";
 
 const BookDetails = () => {
   const { id } = useParams();
-  const { user,loading } = UseAuth();
-  if(loading){
-    return <Loading></Loading>
+  const { user, loading } = UseAuth();
+  if (loading) {
+    return <Loading></Loading>;
   }
   const email = user?.email;
   const axiosSecure = useAxiosSecure();
   const { data, isLoading, isError } = useBookDetails({ id });
-  const { data:userDetails,refetch } = useUserDetails();
-  
+  const { data: userDetails, refetch } = useUserDetails();
+
   if (isLoading) {
     return <Loading></Loading>;
   }
-
-  
 
   const handleAddToCart = async () => {
     try {
@@ -40,7 +38,6 @@ const BookDetails = () => {
       toast.error(`${error}`);
     }
   };
-  
 
   const handleWishlist = async () => {
     try {
@@ -56,13 +53,12 @@ const BookDetails = () => {
   };
   const { title, author, image, price, stock, category, description } =
     data?.data;
-    const isSeller = userDetails?.data?.role=='seller';
-    const isAdmin = userDetails?.data?.isAdmin;
-    const cart = userDetails?.data?.cart || [];
-    const wishlist = userDetails?.data?.wishlist || [];
-    const isFound = cart.find((item) => item === id);
-    const isFoundWishlist = wishlist.find((item) => item === id);
- 
+  const isSeller = userDetails?.data?.role == "seller";
+  const isAdmin = userDetails?.data?.isAdmin;
+  const cart = userDetails?.data?.cart || [];
+  const wishlist = userDetails?.data?.wishlist || [];
+  const isFound = cart.find((item) => item === id);
+  const isFoundWishlist = wishlist.find((item) => item === id);
 
   return (
     <div className="w-full p-8">
@@ -88,15 +84,25 @@ const BookDetails = () => {
               </p>
             </div>
             <div className="lg:flex mt-4 space-y-2 justify-between">
-              <button disabled={isFound ||isAdmin||isSeller }  onClick={handleAddToCart} className="btn bg-accent_1 lg:w-1/3 w-full btn-primary flex gap-2">
-                <MdAddShoppingCart
-                  className="text-2xl"
-                 
-                />
+              <button
+                disabled={isFound || isAdmin || isSeller}
+                onClick={handleAddToCart}
+                className={`lg:w-1/3 border-none items-center justify-center flex gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
+                  isFound || isAdmin || isSeller
+                    ? "bg-gray-400 cursor-not-allowed text-gray-700"
+                    : "text-white   bg-accent hover-green-400"
+                }`}
+              >
+                <MdAddShoppingCart className="text-2xl" />
                 Add to cart
               </button>
-              <button disabled={isFoundWishlist ||isAdmin||isSeller}
-                className="btn w-full lg:w-1/3 bg-accent_2 btn-primary flex gap-2"
+              <button
+                disabled={isFoundWishlist || isAdmin || isSeller}
+                className={`lg:w-1/3 border-none items-center justify-center flex gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
+                  isFoundWishlist || isAdmin || isSeller
+                    ? "bg-gray-400 cursor-not-allowed text-gray-700"
+                    : "text-white bg-error hover:bg-red-400 flex gap-2"
+                }`}
                 onClick={handleWishlist}
               >
                 <FaRegHeart />
@@ -105,10 +111,6 @@ const BookDetails = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="grid lg:grid-cols-2 justify-between">
-        <button></button>
-        <button></button>
       </div>
     </div>
   );

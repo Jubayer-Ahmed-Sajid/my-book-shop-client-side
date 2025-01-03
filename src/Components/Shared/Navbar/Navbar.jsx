@@ -29,17 +29,17 @@ const Navbar = () => {
   );
   const navEnd = (
     <div className="w-full flex gap-2">
-      <NavLink  className="btn w-1/2  text-white border-none bg-accent_1" to="/login">
+      <NavLink  className="btn w-1/2  text-white border-none bg-accent" to="/login">
         Login
       </NavLink>
 
-      <NavLink  className="btn w-1/2  text-white border-none bg-accent_1" to="/registration">
+      <NavLink  className="btn w-1/2  text-white border-none bg-accent" to="/registration">
         Register
       </NavLink>
     </div>
   );
   return (
-    <div className="navbar z-20 relative bg-white shadow-lg">
+    <div className="navbar px-4 z-20 relative bg-white shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -17,7 +17,7 @@ const Testimonial = () => {
       <h2 className="text-center text-xl lg:text-3xl font-bold mt-12 text-primary">
         Sayings From Customers
       </h2>
-      <div className="divider w-1/3 mx-auto my-6 bg-accent_1 h-1"></div>
+      <div className="divider w-1/3 mx-auto my-6 bg-accent h-1"></div>
 
       <div>
         <Swiper

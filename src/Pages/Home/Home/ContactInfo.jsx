@@ -34,7 +34,7 @@ const ContactInfo = () => {
       <h2 className="text-center text-xl lg:text-3xl font-bold mt-12 text-primary">
         Contact Information
       </h2>
-      <div className="divider lg:w-1/3 mx-auto lg:my-6 bg-accent_1 h-1"></div>
+      <div className="divider lg:w-1/3 mx-auto lg:my-6 bg-accent h-1"></div>
       
       <div className="space-y-6  mx-auto bg-white p-8 rounded-lg shadow-lg">
 

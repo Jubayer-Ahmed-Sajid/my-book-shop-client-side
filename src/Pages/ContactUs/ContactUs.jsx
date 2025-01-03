@@ -32,7 +32,7 @@ const ContactUs = () => {
   return (
     <div className="my-20 container mx-auto">
       <PageTitle title={"Contact"}></PageTitle>
-      <div className="bg-accent_2 mx-6 shadow-lg p-6 rounded-lg">
+      <div className="bg-error mx-6 shadow-lg p-6 rounded-lg">
         <h2 className="text-center text-3xl font-bold my-6 text-primary">
           Contact us{" "}
         </h2>
@@ -93,7 +93,7 @@ const ContactUs = () => {
 
           <div className="lg:w-1/2">
             <div className="mt-8">
-              <h3 className="text-2xl font-bold text-accent_1 mb-4">
+              <h3 className="text-2xl font-bold text-accent mb-4">
                 Send Us a Message
               </h3>
               <form ref={form} onSubmit={sendEmail} className="space-y-4">
@@ -134,7 +134,7 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
                 <button
-                  className="w-full bg-accent_2 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="w-full bg-error text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
                   type="submit"
                 >
                   Send Message
