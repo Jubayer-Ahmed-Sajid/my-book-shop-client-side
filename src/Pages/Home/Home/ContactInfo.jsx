@@ -30,7 +30,7 @@ const ContactInfo = () => {
 
   };
   return (
-    <div className="bg-gray-100 w-full min-h-screen p-6">
+    <div className="bg-gray-100 w-full p-6">
       <h2 className="text-center text-xl lg:text-3xl font-bold mt-12 text-primary">
         Contact Information
       </h2>

@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Book from "../../../Components/Book";
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useFeaturedBooks from "../../../Hooks/useFeaturedBooks";
 
 const Featured = () => {
-  const axiosPublic = useAxiosPublic()
-  
-  
-  const { data: books, isLoading, isError } = useQuery(
-    'featuredBooks',
-    () => fetchFeaturedBooks(axiosPublic),
-    {
-      staleTime: 5 * 60 * 1000, 
-      cacheTime: 10 * 60 * 1000, 
-    }
-  );
-
+const {data,isError,isLoading} = useFeaturedBooks();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -23,7 +12,7 @@ const Featured = () => {
   if (isError) {
     return <div>Error loading featured books</div>;
   }
-
+const books = data?.data;
 
   return (
     <div>
@@ -32,7 +21,7 @@ const Featured = () => {
       </h2>
       <div className="divider w-1/3 mx-auto my-6 bg-accent h-1"></div>
       <div className="grid mt-6 lg:grid-cols-4 gap-4">
-        {books.map((book) => (
+        {books?.map((book) => (
           <Link key={book._id} to={`/book/${book._id}`}>
             <Book key={book._id} book={book}></Book>
           </Link>
