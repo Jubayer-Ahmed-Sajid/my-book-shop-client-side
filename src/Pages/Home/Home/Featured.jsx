@@ -5,22 +5,25 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Featured = () => {
   const axiosPublic = useAxiosPublic()
-  const [books, setBooks] = useState([]);
   
-  useEffect(() => {
-    const fetchFeaturedBooks = async () => {
-      try {
-        const response = await axiosPublic.get(
-          "/featured-books?count=4"
-        );
-        setBooks(response?.data);
-      } catch (error) {
-        console.error("Error fetching featured books:", error);
-      }
-    };
+  
+  const { data: books, isLoading, isError } = useQuery(
+    'featuredBooks',
+    () => fetchFeaturedBooks(axiosPublic),
+    {
+      staleTime: 5 * 60 * 1000, 
+      cacheTime: 10 * 60 * 1000, 
+    }
+  );
 
-    fetchFeaturedBooks();
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading featured books</div>;
+  }
+
 
   return (
     <div>

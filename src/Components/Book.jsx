@@ -1,6 +1,6 @@
 import React from "react";
 import useUserDetails from "../Hooks/useUserDetails";
-import Loading from "./Loading";
+
 
 const Book = ({ book }) => {
   const { title, author, category, price, stock, image } = book;
