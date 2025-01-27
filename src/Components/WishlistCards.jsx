@@ -3,11 +3,11 @@ import { FaCartShopping } from "react-icons/fa6";
 import useBookDetails from "../Hooks/useBookDetails";
 import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import UseAuth from "../Hooks/UseAuth";
+import useAuth from "../Hooks/useAuth";
 
 const WishlistCards = ({ id, refetch }) => {
   const axiosSecure = useAxiosSecure();
-  const { user, loading } = UseAuth();
+  const { user, loading } = useAuth();
 
   const email = user?.email;
   const { data, isLoading, isError } = useBookDetails({ id: id });

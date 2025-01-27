@@ -1,17 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import UseAuth from "./UseAuth";
+import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const useAxiosSecure = () => {
 
-    const {logout} = UseAuth();
+    const {logout} = useAuth();
     const navigate =useNavigate()
   // Create an axios instance
   const axiosSecure = axios.create({
-    // baseURL: "https://my-book-shop-backend.vercel.app",
-    baseURL: 'http://localhost:5000',
+    baseURL: "https://my-book-shop-backend.vercel.app",
+    // baseURL: 'http://localhost:5000',
     withCredentials: true,
   });
 
@@ -42,7 +42,7 @@ const useAxiosSecure = () => {
           // Handle unauthorized access (e.g., redirect to login)
           logout();
           navigate("/login");
-          console.error("Unauthorized access - possibly invalid token");
+          console.error("Unauthorized access - possibly invalid token", error);
         }
         return Promise.reject(error);
       }

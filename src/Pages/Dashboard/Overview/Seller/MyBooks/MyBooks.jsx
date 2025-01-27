@@ -1,5 +1,5 @@
 import React from "react";
-import UseAuth from "../../../../../Hooks/UseAuth";
+import useAuth from "../../../../../Hooks/useAuth";
 import useSellerBooks from "../../../../../Hooks/useSellerBooks";
 import Loading from "../../../../../Components/Loading";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 
 const MyBooks = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const email = user?.email;
   const { data, isLoading, isError, refetch } = useSellerBooks({ email });
   // console.log(data);

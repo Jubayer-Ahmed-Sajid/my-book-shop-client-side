@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import UseAuth from "../../Hooks/UseAuth";
+import useAuth from "../../Hooks/useAuth";
 import Loading from "../../Components/Loading";
 import useUserDetails from "../../Hooks/useUserDetails";
 
 const AdminRoutes = ({ children }) => {
-  const { user, loading } = UseAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {

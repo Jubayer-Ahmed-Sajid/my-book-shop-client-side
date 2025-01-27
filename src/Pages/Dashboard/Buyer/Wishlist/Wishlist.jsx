@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Loading from "../../../../Components/Loading";
 import useUserDetails from "../../../../Hooks/useUserDetails";
-import UseAuth from "../../../../Hooks/UseAuth";
+import useAuth from "../../../../Hooks/useAuth";
 import WishlistCards from "../../../../Components/WishlistCards";
 import PageTitle from "../../../../Components/PageTitle";
 const Wishlist = () => {

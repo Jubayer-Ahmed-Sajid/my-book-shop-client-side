@@ -1,6 +1,5 @@
 import React from "react";
 import Loading from "../Loading";
-import UseAuth from "../../Hooks/UseAuth";
 import useUserDetails from "../../Hooks/useUserDetails";
 import { LuUsersRound } from "react-icons/lu";
 import { GiBookshelf } from "react-icons/gi";
@@ -10,9 +9,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { GrOverview } from "react-icons/gr";
+import useAuth from "../../Hooks/useAuth";
 
 const DropDownMenu = () => {
-  const { logout } = UseAuth();
+  const { logout } = useAuth();
   const { data, isLoading, isError } = useUserDetails();
   if (isLoading) {
     return <Loading />;

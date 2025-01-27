@@ -1,6 +1,6 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import UseAuth from "../../../../Hooks/UseAuth";
+import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Components/Loading";
 import BasicTable from "../../../../Components/BasicTable";

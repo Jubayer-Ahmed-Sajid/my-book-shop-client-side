@@ -1,7 +1,7 @@
 import useAxiosPublic from "./useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Components/Loading";
-import useAuth from "./UseAuth";
+import useAuth from "./useAuth";
 
 // Custom hook to fetch user details
 const useUserDetails = () => {

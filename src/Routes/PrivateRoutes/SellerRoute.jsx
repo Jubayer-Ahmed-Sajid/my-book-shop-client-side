@@ -1,11 +1,11 @@
 import React from 'react';
-import UseAuth from '../../Hooks/UseAuth';
+import useAuth from '../../Hooks/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import useUserDetails from '../../Hooks/useUserDetails';
 import Loading from '../../Components/Loading';
 
 const SellerRoute = ({children}) => {
-    const {user,loading} = UseAuth();
+    const {user,loading} = useAuth();
     if(loading){
         return <Loading></Loading>
     }

@@ -1,14 +1,14 @@
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
-import UseAuth from "../../../../../Hooks/UseAuth";
+import useAuth from "../../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import PageTitle from "../../../../../Components/PageTitle";
 import { toast } from "sonner";
 import useUserDetails from "../../../../../Hooks/useUserDetails";
 import Loading from "../../../../../Components/Loading";
 const AddBooks = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const {data,isLoading} = useUserDetails();
 
   if(isLoading){

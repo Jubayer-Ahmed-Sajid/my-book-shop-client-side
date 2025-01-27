@@ -3,22 +3,24 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import UseAuth from "../../Hooks/UseAuth";
+import useAuth from "../../Hooks/useAuth";
 import { toast } from "sonner";
 import { FcGoogle } from "react-icons/fc";
 import PageTitle from "../../Components/PageTitle";
 import { MdOutlineMail } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoKeyOutline } from "react-icons/io5";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 // image hosting key and api
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Registration = () => {
-  const { createUser, googleSignin } = UseAuth();
+  const { createUser, googleSignin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosPublic = useAxiosPublic();
 
   const formik = useFormik({
     initialValues: {
@@ -48,7 +50,7 @@ const Registration = () => {
 
     // Form Submission
     onSubmit: async (values) => {
-      console.log(values)
+      console.log(values);
       const minDelay = 1000;
       const startTime = Date.now();
       toast.loading("User creating...");
@@ -61,6 +63,12 @@ const Registration = () => {
       const status = values?.role == "seller" ? "pending" : "approved";
 
       // image hosting and url creation
+      const imageSizeLimit = 1024 * 1024; // 
+      if (image.size > imageSizeLimit) {
+        toast.error("Image size exceeds the limit of 1MB");
+        toast.dismiss();
+        return;
+      }
       const formData = new FormData();
       formData.append("image", image);
       const res = await axios.post(image_hosting_api, formData, {
@@ -83,9 +91,11 @@ const Registration = () => {
           cart,
           wishlist,
         };
-        await axios.post("http://localhost:5000/users", userInfo).then((res) => {
-          // console.log(res?.data);
-        });
+        await axiosPublic
+          .post("/users", userInfo)
+          .then((res) => {
+            // console.log(res?.data);
+          });
         const passed = Date.now() - startTime;
         if (passed < minDelay) {
           await new Promise((resolve) =>
@@ -129,7 +139,10 @@ const Registration = () => {
       const startTime = Date.now();
       toast.loading("User is creating...");
 
-      await axios.post("http://localhost:5000/users", userInfo);
+      await axiosPublic.post(
+        "/users",
+        userInfo
+      );
 
       const passed = Date.now() - startTime;
       if (passed < minDelay) {
@@ -221,6 +234,7 @@ const Registration = () => {
             }}
             onBlur={formik.handleBlur}
           />
+          <p className="text-sm">image size must be less than 400 KB</p>
         </div>
 
         <div className="space-y-2 mx-auto w-3/4 lg:w-2/4">
@@ -256,9 +270,7 @@ const Registration = () => {
             onBlur={formik.handleBlur}
             value={formik.values.role}
           >
-            <option disabled >
-              Select Role
-            </option>
+            <option disabled>Select Role</option>
             <option value="buyer">Buyer</option>
             <option value="seller">Seller</option>
           </select>

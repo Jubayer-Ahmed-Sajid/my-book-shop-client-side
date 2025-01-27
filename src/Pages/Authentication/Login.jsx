@@ -1,5 +1,5 @@
 import React from "react";
-import UseAuth from "../../Hooks/UseAuth";
+import useAuth from "../../Hooks/useAuth";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "sonner";
@@ -11,7 +11,7 @@ import { MdOutlineMail } from "react-icons/md";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
-  const { login, googleSignin } = UseAuth();
+  const { login, googleSignin } = useAuth();
   const axiosPublic = useAxiosPublic()
   const navigate = useNavigate();
   const formik = useFormik({

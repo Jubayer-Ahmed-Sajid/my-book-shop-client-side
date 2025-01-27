@@ -4,11 +4,11 @@ import useBookDetails from "../Hooks/useBookDetails";
 import { FaCartShopping } from "react-icons/fa6";
 import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import UseAuth from "../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
 
 const CartCard = ({ id, refetch }) => {
-  const { user, loading } = UseAuth();
+  const { user, loading } = useAuth();
   
   const email = user?.email;
   const { data, isLoading, isError } = useBookDetails({ id: id });

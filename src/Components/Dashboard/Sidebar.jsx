@@ -8,11 +8,11 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoAddCircleOutline, IoHomeOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import Loading from "../Loading";
-import UseAuth from "../../Hooks/UseAuth";
 import { GrOverview } from "react-icons/gr";
+import useAuth from "../../Hooks/useAuth";
 
 const Sidebar = () => {
-  const { logout } = UseAuth();
+  const { logout } = useAuth();
   const { data, isLoading, isError } = useUserDetails();
   if (isLoading) {
     return <Loading />;

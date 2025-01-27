@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useUserDetails from "../../../Hooks/useUserDetails";
-import UseAuth from "../../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
 import { MdLogout, MdOutlineDashboardCustomize } from "react-icons/md";
 
 const DropDown = () => {
   const { data, isLoading } = useUserDetails();
-  const { logout } = UseAuth();
+  const { logout } = useAuth();
   if (isLoading) {
     return <div className="12">Loading... </div>;
   }

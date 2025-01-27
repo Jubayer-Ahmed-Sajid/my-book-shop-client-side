@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useUserDetails from "../Hooks/useUserDetails";
 import PageTitle from "./PageTitle";
-import useAuth from "../Hooks/UseAuth";
+import useAuth from "../Hooks/useAuth";
 import Loading from "./Loading";
 
 const BookDetails = () => {
@@ -16,9 +16,9 @@ const BookDetails = () => {
   const { data, isLoading, isError, refetch } = useBookDetails({ id });
   const { data: userDetails,refetch:userRefetch } = useUserDetails();
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
+  const { user,loading } = useAuth();
   const email = user?.email;
-if(isLoading){
+if(isLoading ||loading){
   return <Loading/>
 }
   const handleAddToCart = async () => {
@@ -29,7 +29,7 @@ if(isLoading){
       });
       
       toast.success("Product added to cart");
-      refetch();
+      
       userRefetch();
     } catch (error) {
       toast.error(`${error}`);
@@ -43,7 +43,7 @@ if(isLoading){
         id,
       });
       toast.success("Product added to wishlist");
-      refetch();
+     
       userRefetch();
     } catch (error) {
       toast.error(`${error.message}`);
