@@ -5,7 +5,7 @@ const Loading = () => {
     <div className="flex items-center justify-center h-screen">
       <GridLoader
         color={"#FF0000"}
-        loading:true
+        loading={true}
         size={50}
         aria-label="Loading Spinner"
         data-testid="loader"

@@ -9,7 +9,7 @@ import Loading from "../../../Components/Loading";
 const Testimonial = () => {
   const { testimonials, isLoading, isError } = useTestimonialData();
 
-  if (isLoading) return <p><Loading></Loading></p>;
+  if (isLoading) return <Loading></Loading>;
   if (isError) return <p>Error loading testimonials.</p>;
 
   return (

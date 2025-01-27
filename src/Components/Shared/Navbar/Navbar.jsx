@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
-import UseAuth from "../../../Hooks/UseAuth";
+import UseAuth from "../../../Hooks/useAuth";
 import Loading from "../../Loading";
 
 const Navbar = () => {

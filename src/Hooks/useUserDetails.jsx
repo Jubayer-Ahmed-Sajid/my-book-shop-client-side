@@ -1,16 +1,15 @@
-import UseAuth from "./UseAuth";
 import useAxiosPublic from "./useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Components/Loading";
+import useAuth from "./UseAuth";
 
 // Custom hook to fetch user details
 const useUserDetails = () => {
 
-  const { user,loading } = UseAuth();
-  if(loading){
-    return <Loading></Loading>
-  }
+  const { user,loading } = useAuth();
   const email = user?.email;
+ 
+
 
   const axiosPublic = useAxiosPublic();
 

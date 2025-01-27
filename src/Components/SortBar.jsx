@@ -12,7 +12,7 @@ const SortBar = ({setSorts}) => {
           onChange={handleSort}
           className="select select-bordered w-full max-w-xs"
         >
-          <option disabled selected>
+          <option disabled>
            Sort by Price
           </option>
           <option value="asc">Price Low to High</option>

@@ -3,37 +3,34 @@ import { useParams } from "react-router-dom";
 import useBookDetails from "../Hooks/useBookDetails";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
-import UseAuth from "../Hooks/UseAuth";
 import { toast } from "sonner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import Loading from "./Loading";
 import useUserDetails from "../Hooks/useUserDetails";
 import PageTitle from "./PageTitle";
+import useAuth from "../Hooks/UseAuth";
+import Loading from "./Loading";
 
 const BookDetails = () => {
   const { id } = useParams();
-  const { user, loading } = UseAuth();
-  if (loading) {
-    return <Loading></Loading>;
-  }
-  const email = user?.email;
+
+  const { data, isLoading, isError, refetch } = useBookDetails({ id });
+  const { data: userDetails,refetch:userRefetch } = useUserDetails();
   const axiosSecure = useAxiosSecure();
-  const { data, isLoading, isError } = useBookDetails({ id });
-  const { data: userDetails, refetch } = useUserDetails();
-
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
-
+  const { user } = useAuth();
+  const email = user?.email;
+if(isLoading){
+  return <Loading/>
+}
   const handleAddToCart = async () => {
     try {
       const res = await axiosSecure.patch("/users/add-cart", {
         email,
         id,
       });
-      refetch();
-
+      
       toast.success("Product added to cart");
+      refetch();
+      userRefetch();
     } catch (error) {
       toast.error(`${error}`);
     }
@@ -45,14 +42,15 @@ const BookDetails = () => {
         email,
         id,
       });
-      refetch();
       toast.success("Product added to wishlist");
+      refetch();
+      userRefetch();
     } catch (error) {
       toast.error(`${error.message}`);
     }
   };
   const { title, author, image, price, stock, category, description } =
-    data?.data;
+    data || {};
   const isSeller = userDetails?.data?.role == "seller";
   const isAdmin = userDetails?.data?.isAdmin;
   const cart = userDetails?.data?.cart || [];

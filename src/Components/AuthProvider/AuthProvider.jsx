@@ -12,8 +12,7 @@ import {
 import app from "../FirebaseConfig";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -28,7 +27,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleSignin = () => {
-    return signInWithPopup(auth,googleProvider);
+    return signInWithPopup(auth, googleProvider);
   };
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
@@ -39,23 +38,23 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if(currentUser){
-          axiosPublic.post('/jwt',{email:currentUser.email})
-          .then((data)=>{
-            if(data.data){
-              localStorage.setItem("access-token",data?.data?.token)
-              setLoading(false)
+      if (currentUser) {
+        axiosPublic
+          .post("/jwt", { email: currentUser.email })
+          .then((data) => {
+            if (data.data) {
+              localStorage.setItem("access-token", data?.data?.token);
+              setLoading(false);
             }
           })
-          .catch((error)=>{
+          .catch((error) => {
             console.error("Error fetching jwt token:", error);
             setLoading(false);
-          })
-        }
-        else{
-          localStorage.removeItem("access-token");
-          setLoading(false);
-        }
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => {
       unSubscribe();

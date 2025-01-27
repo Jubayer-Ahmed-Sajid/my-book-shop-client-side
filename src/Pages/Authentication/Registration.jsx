@@ -2,9 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import loginBg from "../../assets/vecteezy_man-entering-security-password_4689193-1.jpg";
 import axios from "axios";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import UseAuth from "../../Hooks/UseAuth";
 import { toast } from "sonner";
 import { FcGoogle } from "react-icons/fc";
@@ -19,7 +17,6 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const Registration = () => {
   const { createUser, googleSignin } = UseAuth();
-  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,6 +48,7 @@ const Registration = () => {
 
     // Form Submission
     onSubmit: async (values) => {
+      console.log(values)
       const minDelay = 1000;
       const startTime = Date.now();
       toast.loading("User creating...");
@@ -85,7 +83,7 @@ const Registration = () => {
           cart,
           wishlist,
         };
-        await axiosPublic.post("/users", userInfo).then((res) => {
+        await axios.post("http://localhost:5000/users", userInfo).then((res) => {
           // console.log(res?.data);
         });
         const passed = Date.now() - startTime;
@@ -131,7 +129,7 @@ const Registration = () => {
       const startTime = Date.now();
       toast.loading("User is creating...");
 
-      await axiosPublic.post("/users", userInfo);
+      await axios.post("http://localhost:5000/users", userInfo);
 
       const passed = Date.now() - startTime;
       if (passed < minDelay) {
@@ -258,7 +256,7 @@ const Registration = () => {
             onBlur={formik.handleBlur}
             value={formik.values.role}
           >
-            <option disabled selected>
+            <option disabled >
               Select Role
             </option>
             <option value="buyer">Buyer</option>

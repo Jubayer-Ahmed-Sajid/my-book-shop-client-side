@@ -15,9 +15,9 @@ const CartCard = ({ id, refetch }) => {
   const axiosSecure = useAxiosSecure();
   let book = {};
   if (!isLoading) {
-    book = data?.data;
+    book = data;
   }
-  const { title, image, author, price, category, stock, description } = book;
+  const { title, image, author, price, category, stock, description } = book || {};
 
   const handleRemoveItem = async () => {
     try {

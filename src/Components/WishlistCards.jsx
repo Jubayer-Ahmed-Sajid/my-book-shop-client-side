@@ -13,9 +13,9 @@ const WishlistCards = ({ id, refetch }) => {
   const { data, isLoading, isError } = useBookDetails({ id: id });
   let book = {};
   if (!isLoading) {
-    book = data?.data;
+    book = data;
   }
-  const { title, image, author, price, category, stock } = book;
+  const { title, image, author, price, category, stock } = book || {};
 
   const handleAddToCart = async () => {
     try {

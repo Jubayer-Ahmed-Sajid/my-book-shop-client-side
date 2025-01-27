@@ -77,7 +77,7 @@ const Books = () => {
             ) : (
               books?.map((book) => (
                 <Link to={`/book/${book._id}`}>
-                  <Book key={book?._id} book={book}></Book>
+                  <Book key={book?.title} book={book}></Book>
                 </Link>
               ))
             )}
